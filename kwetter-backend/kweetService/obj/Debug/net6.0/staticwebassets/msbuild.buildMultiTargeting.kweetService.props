@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\kweetService.props" />
+</Project>
