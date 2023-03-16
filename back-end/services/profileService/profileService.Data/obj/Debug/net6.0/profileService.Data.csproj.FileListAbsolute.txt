@@ -1,0 +1,5 @@
+D:\Fontys\semester_6\portfolio\portfolio\Kwetter\back-end\services\profileService\profileService.Data\obj\Debug\net6.0\profileService.Data.csproj.AssemblyReference.cache
+D:\Fontys\semester_6\portfolio\portfolio\Kwetter\back-end\services\profileService\profileService.Data\obj\Debug\net6.0\profileService.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\Fontys\semester_6\portfolio\portfolio\Kwetter\back-end\services\profileService\profileService.Data\obj\Debug\net6.0\profileService.Data.AssemblyInfoInputs.cache
+D:\Fontys\semester_6\portfolio\portfolio\Kwetter\back-end\services\profileService\profileService.Data\obj\Debug\net6.0\profileService.Data.AssemblyInfo.cs
+D:\Fontys\semester_6\portfolio\portfolio\Kwetter\back-end\services\profileService\profileService.Data\obj\Debug\net6.0\profileService.Data.csproj.CoreCompileInputs.cache
