@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "ZtoQ+9CvrhE45iHfsenNzNRc453kPpRW/aCh8ZzWyM20HLIXKAUim6PfCrPG8siFzB6+oYLs7DjRwg7A+n5+8g==",
+  "success": true,
+  "projectFilePath": "D:\\Fontys\\semester_6\\portfolio\\portfolio\\Kwetter\\back-end\\services\\profileService\\profileService.DomainModel\\profileService.DomainModel.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1803",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "You are running the 'restore' operation with an 'HTTP' source, 'http://company-squid:3128'. Non-HTTPS access will be removed in a future version. Consider migrating to an 'HTTPS' source."
+    }
+  ]
+}
