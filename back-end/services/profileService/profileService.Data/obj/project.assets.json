@@ -438,6 +438,16 @@
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
         }
+      },
+      "MessagingModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/MessagingModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MessagingModels.dll": {}
+        }
       }
     }
   },
@@ -1164,11 +1174,17 @@
         "system.threading.channels.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "MessagingModels/1.0.0": {
+      "type": "project",
+      "path": "../../MessagingModels/MessagingModels.csproj",
+      "msbuildProject": "../../MessagingModels/MessagingModels.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "MassTransit >= 8.0.13",
+      "MessagingModels >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 7.0.3"
     ]
   },
@@ -1203,7 +1219,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Fontys\\semester_6\\portfolio\\portfolio\\Kwetter\\back-end\\services\\MessagingModels\\MessagingModels.csproj": {
+              "projectPath": "D:\\Fontys\\semester_6\\portfolio\\portfolio\\Kwetter\\back-end\\services\\MessagingModels\\MessagingModels.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

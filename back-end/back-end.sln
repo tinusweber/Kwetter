@@ -5,20 +5,26 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{ABBDA330-6CBA-4395-9E22-F22AB93F4AA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "profileService.API", "services\profileService\profileService.API\profileService.API.csproj", "{CC27DAB9-6A30-4430-9D9D-852433624F10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "profileService.API", "services\profileService\profileService.API\profileService.API.csproj", "{CC27DAB9-6A30-4430-9D9D-852433624F10}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "profileService", "profileService", "{F93810D3-EE60-4BD6-A895-C0140AF1DAA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "profileService.Application", "profileService.Application\profileService.Application.csproj", "{E1C73385-3E14-4D70-AD92-940D6E9AAE7F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "profileService.Data", "services\profileService\profileService.Data\profileService.Data.csproj", "{96728DA5-CF32-4DE3-BC2E-F2458C34BF7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "profileService.Data", "services\profileService\profileService.Data\profileService.Data.csproj", "{96728DA5-CF32-4DE3-BC2E-F2458C34BF7C}"
 	ProjectSection(ProjectDependencies) = postProject
 		{15387C6A-C837-47C0-A23F-C78B9D11F577} = {15387C6A-C837-47C0-A23F-C78B9D11F577}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "profileService.DomainModel", "services\profileService\profileService.DomainModel\profileService.DomainModel.csproj", "{2E7C3FC2-9A1D-4E6F-84FE-A1B49147CC25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "profileService.DomainModel", "services\profileService\profileService.DomainModel\profileService.DomainModel.csproj", "{2E7C3FC2-9A1D-4E6F-84FE-A1B49147CC25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessagingModels", "services\MessagingModels\MessagingModels.csproj", "{15387C6A-C837-47C0-A23F-C78B9D11F577}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessagingModels", "services\MessagingModels\MessagingModels.csproj", "{15387C6A-C837-47C0-A23F-C78B9D11F577}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helpers", "services\Helpers\Helpers.csproj", "{74933761-6412-4F91-AE44-D0AAD0D611C4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "profileService.Application", "services\profileService\profileService.Application\profileService.Application.csproj", "{EA584A95-A37F-485B-A59F-35E5041127BB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "apiGatewayOcelot", "gateway\apiGatewayOcelot\apiGatewayOcelot.csproj", "{54118778-D697-4D81-B0A6-221E409CC9C8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "gateway", "gateway", "{B1733477-FD61-47FE-A87C-58F0371EE6C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,10 +36,6 @@ Global
 		{CC27DAB9-6A30-4430-9D9D-852433624F10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC27DAB9-6A30-4430-9D9D-852433624F10}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC27DAB9-6A30-4430-9D9D-852433624F10}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E1C73385-3E14-4D70-AD92-940D6E9AAE7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E1C73385-3E14-4D70-AD92-940D6E9AAE7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E1C73385-3E14-4D70-AD92-940D6E9AAE7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E1C73385-3E14-4D70-AD92-940D6E9AAE7F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{96728DA5-CF32-4DE3-BC2E-F2458C34BF7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{96728DA5-CF32-4DE3-BC2E-F2458C34BF7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96728DA5-CF32-4DE3-BC2E-F2458C34BF7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -46,6 +48,18 @@ Global
 		{15387C6A-C837-47C0-A23F-C78B9D11F577}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15387C6A-C837-47C0-A23F-C78B9D11F577}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15387C6A-C837-47C0-A23F-C78B9D11F577}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74933761-6412-4F91-AE44-D0AAD0D611C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74933761-6412-4F91-AE44-D0AAD0D611C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74933761-6412-4F91-AE44-D0AAD0D611C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74933761-6412-4F91-AE44-D0AAD0D611C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA584A95-A37F-485B-A59F-35E5041127BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA584A95-A37F-485B-A59F-35E5041127BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA584A95-A37F-485B-A59F-35E5041127BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA584A95-A37F-485B-A59F-35E5041127BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54118778-D697-4D81-B0A6-221E409CC9C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54118778-D697-4D81-B0A6-221E409CC9C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54118778-D697-4D81-B0A6-221E409CC9C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54118778-D697-4D81-B0A6-221E409CC9C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,10 +67,12 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{CC27DAB9-6A30-4430-9D9D-852433624F10} = {F93810D3-EE60-4BD6-A895-C0140AF1DAA7}
 		{F93810D3-EE60-4BD6-A895-C0140AF1DAA7} = {ABBDA330-6CBA-4395-9E22-F22AB93F4AA4}
-		{E1C73385-3E14-4D70-AD92-940D6E9AAE7F} = {F93810D3-EE60-4BD6-A895-C0140AF1DAA7}
 		{96728DA5-CF32-4DE3-BC2E-F2458C34BF7C} = {F93810D3-EE60-4BD6-A895-C0140AF1DAA7}
 		{2E7C3FC2-9A1D-4E6F-84FE-A1B49147CC25} = {F93810D3-EE60-4BD6-A895-C0140AF1DAA7}
 		{15387C6A-C837-47C0-A23F-C78B9D11F577} = {ABBDA330-6CBA-4395-9E22-F22AB93F4AA4}
+		{74933761-6412-4F91-AE44-D0AAD0D611C4} = {ABBDA330-6CBA-4395-9E22-F22AB93F4AA4}
+		{EA584A95-A37F-485B-A59F-35E5041127BB} = {F93810D3-EE60-4BD6-A895-C0140AF1DAA7}
+		{54118778-D697-4D81-B0A6-221E409CC9C8} = {B1733477-FD61-47FE-A87C-58F0371EE6C0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CB8C447D-BC18-463D-8259-73F43CD8E213}
