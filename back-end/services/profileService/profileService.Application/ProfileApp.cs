@@ -17,7 +17,7 @@ namespace ProfileService.Application
             return profileRepository.FollowUser(userId, userToFollow);
         }
 
-        public Profile GetProfile(Guid userId)
+        public ProfileData GetProfile(Guid userId)
         {
             return profileRepository.GetProfile(userId);
         }
@@ -27,12 +27,12 @@ namespace ProfileService.Application
             return profileRepository.UnfollowUser(userId, userToUnfollow);
         }
 
-        public Task<Profile> UpdateProfile(Guid userId, Profile profileInfo)
+        public Task<ProfileData> UpdateProfile(Guid userId, ProfileData profileInfo)
         {
             return profileRepository.UpdateProfile(userId, profileInfo);
         }
 
-        public Task<List<Profile>> GetAll()
+        public Task<List<ProfileData>> GetAll()
         {
             return profileRepository.GetAll();
         }

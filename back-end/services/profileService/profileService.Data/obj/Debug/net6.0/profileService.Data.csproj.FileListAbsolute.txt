@@ -3,3 +3,13 @@ D:\Fontys\semester_6\portfolio\portfolio\Kwetter\back-end\services\profileServic
 D:\Fontys\semester_6\portfolio\portfolio\Kwetter\back-end\services\profileService\profileService.Data\obj\Debug\net6.0\profileService.Data.AssemblyInfoInputs.cache
 D:\Fontys\semester_6\portfolio\portfolio\Kwetter\back-end\services\profileService\profileService.Data\obj\Debug\net6.0\profileService.Data.AssemblyInfo.cs
 D:\Fontys\semester_6\portfolio\portfolio\Kwetter\back-end\services\profileService\profileService.Data\obj\Debug\net6.0\profileService.Data.csproj.CoreCompileInputs.cache
+D:\Fontys\semester_6\portfolio\portfolio\Kwetter\back-end\services\profileService\profileService.Data\bin\Debug\net6.0\profileService.Data.deps.json
+D:\Fontys\semester_6\portfolio\portfolio\Kwetter\back-end\services\profileService\profileService.Data\bin\Debug\net6.0\profileService.Data.dll
+D:\Fontys\semester_6\portfolio\portfolio\Kwetter\back-end\services\profileService\profileService.Data\bin\Debug\net6.0\profileService.Data.pdb
+D:\Fontys\semester_6\portfolio\portfolio\Kwetter\back-end\services\profileService\profileService.Data\bin\Debug\net6.0\MessagingModels.dll
+D:\Fontys\semester_6\portfolio\portfolio\Kwetter\back-end\services\profileService\profileService.Data\bin\Debug\net6.0\MessagingModels.pdb
+D:\Fontys\semester_6\portfolio\portfolio\Kwetter\back-end\services\profileService\profileService.Data\obj\Debug\net6.0\profileService.Data.csproj.CopyComplete
+D:\Fontys\semester_6\portfolio\portfolio\Kwetter\back-end\services\profileService\profileService.Data\obj\Debug\net6.0\profileService.Data.dll
+D:\Fontys\semester_6\portfolio\portfolio\Kwetter\back-end\services\profileService\profileService.Data\obj\Debug\net6.0\refint\profileService.Data.dll
+D:\Fontys\semester_6\portfolio\portfolio\Kwetter\back-end\services\profileService\profileService.Data\obj\Debug\net6.0\profileService.Data.pdb
+D:\Fontys\semester_6\portfolio\portfolio\Kwetter\back-end\services\profileService\profileService.Data\obj\Debug\net6.0\ref\profileService.Data.dll

@@ -6,10 +6,10 @@ namespace ProfileService.Data
     {
         public Task FollowUser(Guid userId, Guid userToFollow);
         public Task UnfollowUser(Guid userId, Guid userToUnfollow);
-        public Task<List<Profile>> GetAll();
-        public Profile GetProfile(Guid userId);
+        public Task<List<ProfileData>> GetAll();
+        public ProfileData GetProfile(Guid userId);
 
-        public Task<Profile> UpdateProfile(Guid userId, Profile profileInfo);
+        public Task<ProfileData> UpdateProfile(Guid userId, ProfileData profileInfo);
 
     }
 }

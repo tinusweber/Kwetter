@@ -21,7 +21,7 @@ namespace ProfileService.Data.Consumers
         public async Task Consume(ConsumeContext<IUserRegisteredEvent> context)
         {
 
-            await profileRepo.Profiles.AddAsync(new Models.Profile()
+            await profileRepo.Profiles.AddAsync(new Models.ProfileData()
             {
                 Biography = "I am new to Kwetter!",
                 OwnerId = Guid.Parse(context.Message.Id),

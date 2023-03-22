@@ -26,12 +26,12 @@ namespace ProfileService.Data
             await publishEndpoint.SendUserFollowedEvent(userId, userToFollow);
         }
 
-        public Task<List<Profile>> GetAll()
+        public Task<List<ProfileData>> GetAll()
         {
             return _repo.Profiles.ToListAsync();
         }
 
-        public Profile GetProfile(Guid userId)
+        public ProfileData GetProfile(Guid userId)
         {
             return _repo.Profiles.Single(x => x.OwnerId == userId);
         }
@@ -59,7 +59,7 @@ namespace ProfileService.Data
             await _repo.SaveChangesAsync();
         }
 
-        public async Task<Profile> UpdateProfile(Guid userId, Profile profileInfo)
+        public async Task<ProfileData> UpdateProfile(Guid userId, ProfileData profileInfo)
         {
             profileInfo.OwnerId = userId;
 

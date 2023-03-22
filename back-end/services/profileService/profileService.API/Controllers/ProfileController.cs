@@ -2,6 +2,7 @@ using Helpers;
 using Microsoft.AspNetCore.Mvc;
 using ProfileService.Application;
 using MassTransit.Initializers;
+using profileService.API.Models;
 
 namespace ProfileService.Api.Controllers
 {
@@ -41,7 +42,7 @@ namespace ProfileService.Api.Controllers
         [HttpPatch("{profileId}")]
         public async Task<IActionResult> UpdateProfile(string profileId, [FromBody] ProfileUpdate profile)
         {
-            var profileDto = await profileApp.UpdateProfile(Guid.Parse(profileId), new Data.Models.Profile()
+            var profileDto = await profileApp.UpdateProfile(Guid.Parse(profileId), new Data.Models.ProfileData()
             {
                 Biography = profile.Biography,
                 ProfilePictureBase64 = profile.ProfilePictureBase64,

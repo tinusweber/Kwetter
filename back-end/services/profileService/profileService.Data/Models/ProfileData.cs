@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProfileService.Data.Models
 {
-    public class Profile
+    public class ProfileData
     {
         [Key]
         public Guid OwnerId { get; set; }

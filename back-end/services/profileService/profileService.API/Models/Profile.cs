@@ -1,4 +1,4 @@
-﻿namespace ProfileService.Api
+﻿namespace profileService.API.Models
 {
     public class Profile
     {

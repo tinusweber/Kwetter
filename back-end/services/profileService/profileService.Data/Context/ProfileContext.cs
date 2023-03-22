@@ -5,7 +5,7 @@ namespace ProfileService.Data.Context
 {
     public class ProfileContext : DbContext
     {
-        public DbSet<Profile> Profiles { get; set; }
+        public DbSet<ProfileData> Profiles { get; set; }
         public ProfileContext(DbContextOptions<ProfileContext> options) : base(options)
         {
 
