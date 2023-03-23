@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Hosting;
 
-namespace apiGatewayOcelot
+namespace authService.Api
 {
     public class Program
     {
@@ -13,10 +11,6 @@ namespace apiGatewayOcelot
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration((host, config) =>
-            {
-                config.AddJsonFile("OcelotConfig/global.ocelot.json");
-            })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
