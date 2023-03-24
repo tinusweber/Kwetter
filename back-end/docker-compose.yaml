@@ -1,0 +1,93 @@
+version: "3.8"
+services:
+  # RABBIT MQ
+  rabbitmq:
+    hostname: rabbitmq
+    image: rabbitmq:3-management-alpine
+    container_name: rabbitmq
+    volumes:
+      - ./.docker/rabbitmq/etc/:/etc/rabbitmq/
+      - ./.docker/rabbitmq/data/:/var/lib/rabbitmq/mnesia
+      - ./.docker/rabbitmq/logs/:/var/log/rabbitmq/
+    environment:
+      - RABBITMQ_DEFAULT_USER=username
+      - RABBITMQ_DEFAULT_PASS=password
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    expose:
+      - "5672"
+  # AUTH SERVICE
+  authservice:
+    hostname: authservice
+    depends_on:
+      - "auth_db"
+      - "rabbitmq"
+    build:
+      dockerfile: AuthService.Dockerfile
+    ports:
+      - "4002:4002"
+    environment:
+      - ASPNETCORE_URLS=http://+:4002
+      - RabbitMQConnectionString=amqp://username:password@rabbitmq:5672
+      - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5433;Database=kwetter.AuthService;User Id=postgres;Password=postgres;
+  auth_db:
+    hostname: auth_db
+    image: postgres:14.1-alpine
+    restart: always
+    container_name: auth_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=kwetter.AuthService
+    ports:
+      - "5433:5432"
+    expose:
+      - "5433:5432"
+    volumes: 
+      - auth_db:/var/lib/postgresql/data
+  # PROFILE SERVICE
+  profileservice:
+    depends_on:
+      - "profile_db"
+      - "rabbitmq"
+    hostname: profileservice
+    build:
+      dockerfile: ProfileService.Dockerfile
+    ports:
+      - "4005:4005"
+    environment:
+      - ASPNETCORE_URLS=http://+:4005
+      - RabbitMQConnectionString=amqp://username:password@rabbitmq:5672
+      - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5432;Database=kwetter.ProfileService;User Id=postgres;Password=postgres;
+  profile_db:
+    hostname: profile_db
+    image: postgres:14.1-alpine
+    restart: always
+    container_name: profile_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=kwetter.ProfileService
+    ports:
+      - "5432:5432"
+    expose:
+      - "5432"
+    volumes: 
+      - profile_db:/var/lib/postgresql/data
+  # GATEWAY
+  gateway:
+      build:
+        dockerfile: Gateway.Dockerfile
+      ports:
+        - "4000:4000"
+      environment:
+        - ASPNETCORE_URLS=http://+:4000
+        - AuthServer=http://host.docker.internal:4002
+
+  # VOLUMES
+volumes:
+  auth_db:
+    driver: local
+  profile_db:
+    driver: local

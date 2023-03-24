@@ -2,10 +2,10 @@
   "version": 3,
   "targets": {
     "net6.0": {
-      "MassTransit/8.0.13": {
+      "MassTransit/8.0.14": {
         "type": "package",
         "dependencies": {
-          "MassTransit.Abstractions": "8.0.13",
+          "MassTransit.Abstractions": "8.0.14",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
           "Microsoft.Extensions.Diagnostics.HealthChecks": "6.0.1",
           "Microsoft.Extensions.Hosting.Abstractions": "6.0.0",
@@ -28,7 +28,7 @@
           }
         }
       },
-      "MassTransit.Abstractions/8.0.13": {
+      "MassTransit.Abstractions/8.0.14": {
         "type": "package",
         "compile": {
           "lib/net6.0/MassTransit.Abstractions.dll": {
@@ -41,11 +41,11 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore/7.0.3": {
+      "Microsoft.EntityFrameworkCore/7.0.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Abstractions": "7.0.3",
-          "Microsoft.EntityFrameworkCore.Analyzers": "7.0.3",
+          "Microsoft.EntityFrameworkCore.Abstractions": "7.0.4",
+          "Microsoft.EntityFrameworkCore.Analyzers": "7.0.4",
           "Microsoft.Extensions.Caching.Memory": "7.0.0",
           "Microsoft.Extensions.DependencyInjection": "7.0.0",
           "Microsoft.Extensions.Logging": "7.0.0"
@@ -64,7 +64,7 @@
           "buildTransitive/net6.0/Microsoft.EntityFrameworkCore.props": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Abstractions/7.0.3": {
+      "Microsoft.EntityFrameworkCore.Abstractions/7.0.4": {
         "type": "package",
         "compile": {
           "lib/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {
@@ -77,7 +77,7 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore.Analyzers/7.0.3": {
+      "Microsoft.EntityFrameworkCore.Analyzers/7.0.4": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/_._": {}
@@ -453,9 +453,9 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "MassTransit": "8.0.13",
+          "MassTransit": "8.0.14",
           "MessagingModels": "1.0.0",
-          "Microsoft.EntityFrameworkCore": "7.0.3"
+          "Microsoft.EntityFrameworkCore": "7.0.4"
         },
         "compile": {
           "bin/placeholder/profileService.Data.dll": {}
@@ -467,10 +467,10 @@
     }
   },
   "libraries": {
-    "MassTransit/8.0.13": {
-      "sha512": "mP/fUW2gn6GFXL5ygds49ka+U975pSwn2Py6JUqmspQjRb+5hyTLU9lIYI0SC/O16QCQz1D7Xm5NRKeibtCfBg==",
+    "MassTransit/8.0.14": {
+      "sha512": "tbFYXzghtAzzcDZge7OdYCceuyw49ATiQKy1sRYGXaxZPCGiXu5v2kTpIN3h3/VtZp+w0SgbBuOYVbtJH3Elkw==",
       "type": "package",
-      "path": "masstransit/8.0.13",
+      "path": "masstransit/8.0.14",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -483,15 +483,15 @@
         "lib/netstandard2.0/MassTransit.xml",
         "lib/netstandard2.1/MassTransit.dll",
         "lib/netstandard2.1/MassTransit.xml",
-        "masstransit.8.0.13.nupkg.sha512",
+        "masstransit.8.0.14.nupkg.sha512",
         "masstransit.nuspec",
         "mt-logo-small.png"
       ]
     },
-    "MassTransit.Abstractions/8.0.13": {
-      "sha512": "eoINmIoMobS3M4zli8kGugjKiuHTtJpxJibkeS0HuDKY9yKLIcVKtbsuYusLYbuLVycA0ybMiwmlBW18bcaG0A==",
+    "MassTransit.Abstractions/8.0.14": {
+      "sha512": "Cj+aBOjS8kJO8l9ygdPHr3oL5rmNLWFTPgAprbtVZFBAMqQKPkcA6Q9Sb8DXHpOBXuWNaSPHNJD5ACnaEQaIWw==",
       "type": "package",
-      "path": "masstransit.abstractions/8.0.13",
+      "path": "masstransit.abstractions/8.0.14",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -504,15 +504,15 @@
         "lib/netstandard2.0/MassTransit.Abstractions.xml",
         "lib/netstandard2.1/MassTransit.Abstractions.dll",
         "lib/netstandard2.1/MassTransit.Abstractions.xml",
-        "masstransit.abstractions.8.0.13.nupkg.sha512",
+        "masstransit.abstractions.8.0.14.nupkg.sha512",
         "masstransit.abstractions.nuspec",
         "mt-logo-small.png"
       ]
     },
-    "Microsoft.EntityFrameworkCore/7.0.3": {
-      "sha512": "6XUI2YGoaLMoP9KGaqWmmd4B2n5bpQbXrVRpH20Et3YjQ0Rn3Ia6HM/ANcSq9rBfjfUySgo9SwUZgQ4m4PF3LQ==",
+    "Microsoft.EntityFrameworkCore/7.0.4": {
+      "sha512": "eNcsY3rft5ERJJcen80Jyg57EScjWZmvhwmFLYXmEOTdVqHG+wQZiMOXnO1b5RH3u2qTQq+Tpci7KGfLAG5Gtg==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore/7.0.3",
+      "path": "microsoft.entityframeworkcore/7.0.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -520,35 +520,35 @@
         "buildTransitive/net6.0/Microsoft.EntityFrameworkCore.props",
         "lib/net6.0/Microsoft.EntityFrameworkCore.dll",
         "lib/net6.0/Microsoft.EntityFrameworkCore.xml",
-        "microsoft.entityframeworkcore.7.0.3.nupkg.sha512",
+        "microsoft.entityframeworkcore.7.0.4.nupkg.sha512",
         "microsoft.entityframeworkcore.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Abstractions/7.0.3": {
-      "sha512": "0NaFBZykUlQHknddRuKY4v+MFZX/AW+v2V85dgj7abIlt+kL3GWa7QNH5S1084VLf1u+dq1SnhZsOvykc3Y0sA==",
+    "Microsoft.EntityFrameworkCore.Abstractions/7.0.4": {
+      "sha512": "6GbYvs4L5oFpYpMzwF05kdDgvX09UmMX7MpDtDlGI5ymijFwquwv+yvdijbtodOuu0yLUpc4n71x6eBdJ8v1xQ==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.abstractions/7.0.3",
+      "path": "microsoft.entityframeworkcore.abstractions/7.0.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "lib/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll",
         "lib/net6.0/Microsoft.EntityFrameworkCore.Abstractions.xml",
-        "microsoft.entityframeworkcore.abstractions.7.0.3.nupkg.sha512",
+        "microsoft.entityframeworkcore.abstractions.7.0.4.nupkg.sha512",
         "microsoft.entityframeworkcore.abstractions.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Analyzers/7.0.3": {
-      "sha512": "CLyRWFLwaOUZNPEia/aBMzFxZqm/ITKt3B+yUFtrg4Ys5VF3n2gvneuItC9IhpeOcjfdSgu/yUKf8y/IsNHs5A==",
+    "Microsoft.EntityFrameworkCore.Analyzers/7.0.4": {
+      "sha512": "YRD4bViuaEPEsaBIL52DzXGzLCt3jYoE3wztYEW1QZYDl89hQ+ca0nvBO2mnMHmCXpU/2wlErrUyDp4x5B/3mg==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.analyzers/7.0.3",
+      "path": "microsoft.entityframeworkcore.analyzers/7.0.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "analyzers/dotnet/cs/Microsoft.EntityFrameworkCore.Analyzers.dll",
         "lib/netstandard2.0/_._",
-        "microsoft.entityframeworkcore.analyzers.7.0.3.nupkg.sha512",
+        "microsoft.entityframeworkcore.analyzers.7.0.4.nupkg.sha512",
         "microsoft.entityframeworkcore.analyzers.nuspec"
       ]
     },
