@@ -24,13 +24,13 @@ services:
       - "auth_db"
       - "rabbitmq"
     build:
-      dockerfile: AuthService.Dockerfile
+      dockerfile: authService.Dockerfile
     ports:
       - "4002:4002"
     environment:
       - ASPNETCORE_URLS=http://+:4002
       - RabbitMQConnectionString=amqp://username:password@rabbitmq:5672
-      - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5433;Database=kwetter.AuthService;User Id=postgres;Password=postgres;
+      - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5433;Database=kwetter.authService;User Id=postgres;Password=postgres;
   auth_db:
     hostname: auth_db
     image: postgres:14.1-alpine
@@ -39,7 +39,7 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=kwetter.AuthService
+      - POSTGRES_DB=kwetter.authService
     ports:
       - "5433:5432"
     expose:
@@ -53,13 +53,13 @@ services:
       - "rabbitmq"
     hostname: profileservice
     build:
-      dockerfile: ProfileService.Dockerfile
+      dockerfile: profileService.Dockerfile
     ports:
       - "4005:4005"
     environment:
       - ASPNETCORE_URLS=http://+:4005
       - RabbitMQConnectionString=amqp://username:password@rabbitmq:5672
-      - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5432;Database=kwetter.ProfileService;User Id=postgres;Password=postgres;
+      - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5432;Database=kwetter.profileService;User Id=postgres;Password=postgres;
   profile_db:
     hostname: profile_db
     image: postgres:14.1-alpine
@@ -68,7 +68,7 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=kwetter.ProfileService
+      - POSTGRES_DB=kwetter.profileService
     ports:
       - "5432:5432"
     expose:
@@ -78,7 +78,7 @@ services:
   # GATEWAY
   gateway:
       build:
-        dockerfile: Gateway.Dockerfile
+        dockerfile: apiGatewayOcelot.Dockerfile
       ports:
         - "4000:4000"
       environment:
