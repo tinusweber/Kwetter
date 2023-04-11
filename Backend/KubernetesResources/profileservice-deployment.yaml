@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose.exe convert -f ../docker-compose.yaml
+    kompose.version: 1.26.0 (40646f47)
+
+  labels:
+    io.kompose.service: profileservice
+  name: profileservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: profileservice
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose.exe convert -f ../docker-compose.yaml
+        kompose.version: 1.26.0 (40646f47)
+      labels:
+        io.kompose.service: profileservice
+    spec:
+      containers:
+        - env:
+            - name: ASPNETCORE_URLS
+              value: http://+:4005
+            - name: ConnectionStrings__DefaultConnection
+              value: Server=profile-db;Port=5432;Database=kwetter.ProfileService;User Id=postgres;Password=postgres;
+            - name: RabbitMQConnectionString
+              value: amqp://username:password@rabbitmq:5672
+          image: docker.io/joepvand/backend_profileservice
+          name: profileservice
+          ports:
+            - containerPort: 4005
+          resources: {}
+      hostname: profileservice
+      restartPolicy: Always
+status: {}

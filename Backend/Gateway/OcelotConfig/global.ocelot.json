@@ -1,0 +1,214 @@
+﻿{
+  //Routing
+  "Routes": [
+
+    //Tweet API with downroute
+    {
+      "DownstreamPathTemplate": "/Tweet/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "tweetservice",
+          "Port": "4003"
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Tweet/{everything}",
+      "Key": "TweetDownroute",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": []
+      }
+    },
+    //Tweet API
+    {
+      "DownstreamPathTemplate": "/Tweet",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "tweetservice",
+          "Port": "4003"
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Tweet",
+      "Key": "Tweet",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": []
+      }
+    },
+
+    //Tweet feed API
+    {
+      "DownstreamPathTemplate": "/Feed",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "tweetservice",
+          "Port": "4003"
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Feed",
+      "Key": "Feed",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": []
+      }
+    },
+
+
+    // Profile api with downroute
+    {
+      "DownstreamPathTemplate": "/Profile/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "profileservice",
+          "Port": "4005"
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Profile/{everything}",
+      "Key": "ProfileDownroute",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": []
+      }
+
+    },
+    //Profile API
+    {
+      "DownstreamPathTemplate": "/Profile",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "profileservice",
+          "Port": "4005"
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Profile",
+      "Key": "Profile",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": []
+
+      }
+
+    },
+
+    // Comment api with downroute
+    {
+      "DownstreamPathTemplate": "/Comment/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "commentservice",
+          "Port": "4006"
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Comment/{everything}",
+      "Key": "CommentDownroute",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": []
+      }
+
+    },
+    //Comment API
+    {
+      "DownstreamPathTemplate": "/Comment",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "commentservice",
+          "Port": "4006"
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Comment",
+      "Key": "Comment",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": []
+
+      }
+
+    },
+    // Report api with downroute
+    {
+      "DownstreamPathTemplate": "/Report/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "reportservice",
+          "Port": "4007"
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Report/{everything}",
+      "Key": "ReportDownroute",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": []
+      }
+
+    },
+    //Report API
+    {
+      "DownstreamPathTemplate": "/Report",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "reportservice",
+          "Port": "4007"
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Report",
+      "Key": "Report",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": []
+
+      }
+    },
+    // Auth api with downroute
+    {
+      "DownstreamPathTemplate": "/Auth/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "authservice",
+          "Port": "4002"
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Auth/{everything}",
+      "Key": "AuthDownroute"
+    },
+    //Auth API
+    {
+      "DownstreamPathTemplate": "/connect/token",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "authservice",
+          "Port": "4002"
+        }
+      ],
+      "UpstreamPathTemplate": "/api/connect/token",
+      "Key": "Auth"
+    },
+    //Auth API
+    {
+      "DownstreamPathTemplate": "/Auth",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "authservice",
+          "Port": "4002"
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Auth",
+      "Key": "Auth"
+    }
+  ],
+  //GLOBAL CONFIG
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:4000"
+  }
+}

@@ -40,6 +40,8 @@ namespace authService.Api
             {
                 var connString = Configuration.GetConnectionString("DefaultConnection");
                 options.UseNpgsql(connString);
+
+                //options.UseNpgsql(Configuration.GetSection("DatabaseConfig")["PostgresSQL"]);
             });
 
             services.AddSwaggerGen(c =>
@@ -47,7 +49,7 @@ namespace authService.Api
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApp1", Version = "v1" });
             });
 
-            services.AddMassTransit(x =>
+            /*services.AddMassTransit(x =>
             {
                 x.UsingRabbitMq((cfx, cnf) =>
                 {
@@ -57,7 +59,7 @@ namespace authService.Api
 
                 });
 
-            });
+            });*/
             services.Configure<MassTransitHostOptions>(options =>
             {
                 options.WaitUntilStarted = true;

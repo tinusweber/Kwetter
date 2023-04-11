@@ -33,7 +33,7 @@ builder.Services.AddTransient<IProfileRepository, ProfileRepository>();
 builder.Services.AddTransient<ProfileApp>();
 
 builder.Services.AddTransient<IEventSender, EventSender>();
-builder.Services.AddMassTransit(x =>
+/*builder.Services.AddMassTransit(x =>
 {
 
     x.AddConsumer<UserRegisteredConsmer>();
@@ -44,10 +44,7 @@ builder.Services.AddMassTransit(x =>
 
         cnf.ConfigureEndpoints(cfx);
     });
-
-
-
-});
+});*/
 builder.Services.Configure<MassTransitHostOptions>(options =>
 {
     options.WaitUntilStarted = true;

@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\MessagingModels\MessagingModels.csproj" />
+		<ProjectReference Include="..\ReportService.Data\ReportService.Data.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="MassTransit.Abstractions" Version="8.0.14" />
+	</ItemGroup>
+
+</Project>

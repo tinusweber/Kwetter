@@ -1,0 +1,5 @@
+
+\csharpsquid:S3928"?The parameter name 'Body' is not declared in the argument list.(Ñ´œë
+fcsharpsquid:S3928"DThe parameter name 'TweeterId' is not declared in the argument list.(º‹œ½ûÿÿÿÿ
+bcsharpsquid:S4581"EUse 'Guid.NewGuid()', 'Guid.Empty' or the constructor with arguments.(ÛÈ…î
+„csharpsquid:S4457"gSplit this method into two, one handling parameters check and the other handling the asynchronous code.(ÒÚÊ¶

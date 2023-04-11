@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose.exe convert -f ../docker-compose.yaml
+    kompose.version: 1.26.0 (40646f47)
+
+  labels:
+    io.kompose.service: reportservice
+  name: reportservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: reportservice
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose.exe convert -f ../docker-compose.yaml
+        kompose.version: 1.26.0 (40646f47)
+
+      labels:
+        io.kompose.service: reportservice
+    spec:
+      containers:
+        - env:
+            - name: ASPNETCORE_URLS
+              value: http://+:4007
+            - name: ConnectionStrings__DefaultConnection
+              value: Server=report-db;Port=5436;Database=kwetter.ReportService;User Id=postgres;Password=postgres;
+            - name: RabbitMQConnectionString
+              value: amqp://username:password@rabbitmq:5672
+          image: docker.io/joepvand/backend_reportservice
+          name: reportservice
+          ports:
+            - containerPort: 4007
+          resources: {}
+      hostname: reportservice
+      restartPolicy: Always
+status: {}

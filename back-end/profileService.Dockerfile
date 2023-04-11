@@ -7,13 +7,15 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["profileService/profileService.API/profileService.API.csproj", "profileService/profileService.API/"]
-COPY ["profileService/profileService.Data/profileService.Data.csproj", "profileService/profileService.Data/"]
-COPY ["profileService/profileService.DomainModel/profileService.DomainModel.csproj", "profileService/profileService.DomainModel/"]
-COPY ["profileService/profileService.Application/profileService.Application.csproj", "profileService/profileService.Application/"]
+COPY ["services/profileService/profileService.API/profileService.API.csproj", "profileService/profileService.API/"]
+COPY ["services/profileService/profileService.Data/profileService.Data.csproj", "profileService/profileService.Data/"]
+COPY ["services/profileService/profileService.DomainModel/profileService.DomainModel.csproj", "profileService/profileService.DomainModel/"]
+COPY ["services/profileService/profileService.Application/profileService.Application.csproj", "profileService/profileService.Application/"]
+COPY ["services/Helpers/Helpers.csproj", "Helpers/"]
+COPY ["services/MessagingModels/MessagingModels.csproj", "MessagingModels/"]
 RUN dotnet restore "profileService/profileService.API/profileService.API.csproj"
 COPY . .
-WORKDIR "/src/profileService/profileService.API"
+WORKDIR "/src/services/profileService/profileService.API"
 RUN dotnet build "profileService.API.csproj" -c Release -o /app/build
 
 FROM build AS publish

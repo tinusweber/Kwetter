@@ -1,35 +1,35 @@
 version: "3.8"
 services:
   # RABBIT MQ
-  rabbitmq:
-    hostname: rabbitmq
-    image: rabbitmq:3-management-alpine
-    container_name: rabbitmq
-    volumes:
-      - ./.docker/rabbitmq/etc/:/etc/rabbitmq/
-      - ./.docker/rabbitmq/data/:/var/lib/rabbitmq/mnesia
-      - ./.docker/rabbitmq/logs/:/var/log/rabbitmq/
-    environment:
-      - RABBITMQ_DEFAULT_USER=username
-      - RABBITMQ_DEFAULT_PASS=password
-    ports:
-      - "5672:5672"
-      - "15672:15672"
-    expose:
-      - "5672"
+  #rabbitmq:
+  #  hostname: rabbitmq
+ #   image: rabbitmq:3-management-alpine
+#    container_name: rabbitmq
+    #volumes:
+   #   - ./.docker/rabbitmq/etc/:/etc/rabbitmq/
+  #    - ./.docker/rabbitmq/data/:/var/lib/rabbitmq/mnesia
+ #     - ./.docker/rabbitmq/logs/:/var/log/rabbitmq/
+#    environment:
+      #- RABBITMQ_DEFAULT_USER=username
+     # - RABBITMQ_DEFAULT_PASS=password
+    #ports:
+   #   - "5672:5672"
+  #    - "15672:15672"
+ #   expose:
+#      - "5672"
   # AUTH SERVICE
   authservice:
     hostname: authservice
     depends_on:
       - "auth_db"
-      - "rabbitmq"
+      #- "rabbitmq"
     build:
       dockerfile: authService.Dockerfile
     ports:
       - "4002:4002"
     environment:
       - ASPNETCORE_URLS=http://+:4002
-      - RabbitMQConnectionString=amqp://username:password@rabbitmq:5672
+      #- RabbitMQConnectionString=amqp://username:password@rabbitmq:5672
       - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5433;Database=kwetter.authService;User Id=postgres;Password=postgres;
   auth_db:
     hostname: auth_db
@@ -50,7 +50,7 @@ services:
   profileservice:
     depends_on:
       - "profile_db"
-      - "rabbitmq"
+      #- "rabbitmq"
     hostname: profileservice
     build:
       dockerfile: profileService.Dockerfile
@@ -58,17 +58,18 @@ services:
       - "4005:4005"
     environment:
       - ASPNETCORE_URLS=http://+:4005
-      - RabbitMQConnectionString=amqp://username:password@rabbitmq:5672
-      - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5432;Database=kwetter.profileService;User Id=postgres;Password=postgres;
+      #- RabbitMQConnectionString=amqp://username:password@rabbitmq:5672
+      - ConnectionStrings:DefaultConnection=Host=host.docker.internal;Port=5432;Database=kwetter.profileService;User Id=postgresql;Password=postgresql;
   profile_db:
     hostname: profile_db
     image: postgres:14.1-alpine
     restart: always
     container_name: profile_db
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgresql
+      - POSTGRES_PASSWORD=postgresql
       - POSTGRES_DB=kwetter.profileService
+      #- POSTGRES_HOST_AUTH_METHOD=trust
     ports:
       - "5432:5432"
     expose:

@@ -1,0 +1,195 @@
+version: "3.8"
+services:
+  # RABBIT MQ
+  rabbitmq:
+    hostname: rabbitmq
+    image: rabbitmq:3-management-alpine
+    container_name: rabbitmq
+    volumes:
+      - ./.docker/rabbitmq/etc/:/etc/rabbitmq/
+      - ./.docker/rabbitmq/data/:/var/lib/rabbitmq/mnesia
+      - ./.docker/rabbitmq/logs/:/var/log/rabbitmq/
+    environment:
+      - RABBITMQ_DEFAULT_USER=username
+      - RABBITMQ_DEFAULT_PASS=password
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    expose:
+      - "5672"
+  # AUTH SERVICE
+  authservice:
+    hostname: authservice
+    depends_on:
+      - "auth_db"
+      - "rabbitmq"
+    build:
+      dockerfile: /Auth/AuthService.Api/Dockerfile
+    ports:
+      - "4002:4002"
+    environment:
+      - ASPNETCORE_URLS=http://+:4002
+      - RabbitMQConnectionString=amqp://username:password@rabbitmq:5672
+      - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5433;Database=kwetter.AuthService;User Id=postgres;Password=postgres;
+  auth_db:
+    hostname: auth_db
+    image: postgres:14.1-alpine
+    restart: always
+    container_name: auth_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=kwetter.AuthService
+    ports:
+      - "5433:5432"
+    expose:
+      - "5433:5432"
+    volumes: 
+      - auth_db:/var/lib/postgresql/data
+   # TWEET SERVICE
+  tweetservice:
+    depends_on:
+      - "tweet_db"
+      - "rabbitmq"
+    hostname: tweetservice
+    build:
+      dockerfile: TweetService/TweetService.Api/Dockerfile
+    ports:
+      - "4003:4003"
+    environment:
+      - ASPNETCORE_URLS=http://+:4003
+      - RabbitMQConnectionString=amqp://username:password@rabbitmq:5672
+      - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5434;Database=kwetter.TweetService;User Id=postgres;Password=postgres;
+  tweet_db:
+    hostname: tweet_db
+    image: postgres:14.1-alpine
+    container_name: tweet_db
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=Kwtter.TweetService
+    ports:
+      - "5434:5432"
+    expose:
+      - "5434:5432"
+    volumes: 
+      - tweet_db:/var/lib/postgresql/data
+  # PROFILE SERVICE
+  profileservice:
+    depends_on:
+      - "profile_db"
+      - "rabbitmq"
+    hostname: profileservice
+    build:
+      dockerfile: ProfileService/ProfileService.Api/Dockerfile
+    ports:
+      - "4005:4005"
+    environment:
+      - ASPNETCORE_URLS=http://+:4005
+      - RabbitMQConnectionString=amqp://username:password@rabbitmq:5672
+      - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5432;Database=kwetter.ProfileService;User Id=postgres;Password=postgres;
+  profile_db:
+    hostname: profile_db
+    image: postgres:14.1-alpine
+    restart: always
+    container_name: profile_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=kwetter.ProfileService
+    ports:
+      - "5432:5432"
+    expose:
+      - "5432"
+    volumes: 
+      - profile_db:/var/lib/postgresql/data
+  # GATEWAY
+  gateway:
+      build:
+        dockerfile: Gateway/Dockerfile
+      ports:
+        - "4000:4000"
+      environment:
+        - ASPNETCORE_URLS=http://+:4000
+        - AuthServer=http://host.docker.internal:4002
+  # COMMENT SERVICE
+  commentservice:
+    depends_on:
+      - "comment_db"
+      - "rabbitmq"
+    hostname: commentservice
+    build:
+      dockerfile: CommentService/CommentService.Api/Dockerfile
+    ports:
+      - "4006:4006"
+    environment:
+      - ASPNETCORE_URLS=http://+:4006
+      - RabbitMQConnectionString=amqp://username:password@rabbitmq:5672
+      - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5435;Database=kwetter.CommentService;User Id=postgres;Password=postgres;
+  comment_db:
+    hostname: comment_db
+    image: postgres:14.1-alpine
+    restart: always
+    container_name: comment_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=kwetter.CommentService
+    ports:
+      - "5435:5432"
+    expose:
+      - "5435"
+    volumes: 
+      - comment_db:/var/lib/postgresql/data
+  # report SERVICE
+  reportservice:
+    depends_on:
+      - "report_db"
+      - "rabbitmq"
+    hostname: reportservice
+    build:
+      dockerfile: ReportService/ReportService.Api/Dockerfile
+    ports:
+      - "4007:4007"
+    environment:
+      - ASPNETCORE_URLS=http://+:4007
+      - RabbitMQConnectionString=amqp://username:password@rabbitmq:5672
+      - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5435;Database=kwetter.ReportService;User Id=postgres;Password=postgres;
+  report_db:
+    hostname: report_db
+    image: postgres:14.1-alpine
+    restart: always
+    container_name: report_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=kwetter.ReportService
+    ports:
+      - "5436:5432"
+    expose:
+      - "5436"
+    volumes: 
+      - report_db:/var/lib/postgresql/data
+  # POST SCANNER
+  postscanner:
+    depends_on:
+      - "rabbitmq"
+    hostname: postscanner
+    build:
+      dockerfile: PostScanner/PostScanner/Dockerfile
+    environment:
+      - RabbitMQConnectionString=amqp://username:password@rabbitmq:5672
+      - GOOGLE_APPLICATION_CREDENTIALS=PostScanner_default_credentials.json
+  # VOLUMES
+volumes:
+  tweet_db:
+    driver: local
+  auth_db:
+    driver: local
+  profile_db:
+    driver: local
+  comment_db:
+    driver: local
+  report_db:
+    driver: local
