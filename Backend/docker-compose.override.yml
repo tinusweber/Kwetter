@@ -33,7 +33,7 @@ services:
       - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5433;Database=kwetter.AuthService;User Id=postgres;Password=postgres;
   auth_db:
     hostname: auth_db
-    image: postgres:14.1-alpine
+    image: postgres:14-alpine
     restart: always
     container_name: auth_db
     environment:
@@ -62,7 +62,7 @@ services:
       - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5434;Database=kwetter.TweetService;User Id=postgres;Password=postgres;
   tweet_db:
     hostname: tweet_db
-    image: postgres:14.1-alpine
+    image: postgres:14-alpine
     container_name: tweet_db
     restart: always
     environment:
@@ -91,7 +91,7 @@ services:
       - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5432;Database=kwetter.ProfileService;User Id=postgres;Password=postgres;
   profile_db:
     hostname: profile_db
-    image: postgres:14.1-alpine
+    image: postgres:14-alpine
     restart: always
     container_name: profile_db
     environment:
@@ -129,7 +129,7 @@ services:
       - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5435;Database=kwetter.CommentService;User Id=postgres;Password=postgres;
   comment_db:
     hostname: comment_db
-    image: postgres:14.1-alpine
+    image: postgres:14-alpine
     restart: always
     container_name: comment_db
     environment:
@@ -158,7 +158,7 @@ services:
       - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5435;Database=kwetter.ReportService;User Id=postgres;Password=postgres;
   report_db:
     hostname: report_db
-    image: postgres:14.1-alpine
+    image: postgres:14-alpine
     restart: always
     container_name: report_db
     environment:
