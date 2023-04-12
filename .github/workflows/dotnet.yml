@@ -35,11 +35,9 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
-    
-    # Execute all unit tests in the solution
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
 
     # Execute all unit tests in the solution
     - name: Execute unit tests
-      run: cd \UnitTests && dotnet test
+      run: |
+        cd UnitTests
+        dotnet test
