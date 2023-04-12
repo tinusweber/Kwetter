@@ -32,7 +32,7 @@ jobs:
       run: cd Backend && dotnet restore Kwetter.sln
       
     - name: Build
-      run: dotnet build --no-restore
+      run: cd Backend && dotnet build --no-restore
 
     # Execute all unit tests in the solution
     - name: Execute unit tests
