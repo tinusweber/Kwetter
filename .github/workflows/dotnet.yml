@@ -15,9 +15,6 @@ jobs:
       matrix:
         configuration: [Debug, Release]
     runs-on: windows-latest  # For a list of available runner types, refer to
-    env:
-      Solution_Name: Kwetter.sln                         # Replace with your solution name, i.e. MyWpfApp.sln.
-      Test_Project_Path: UnitTests\unitTests.csproj      # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
 
     steps:
     - name: Checkout
@@ -32,7 +29,7 @@ jobs:
         dotnet-version: 6.0.x
         
     - name: Restore dependencies
-      run: dotnet restore Kwetter.sln
+      run: cd Backend && dotnet restore Kwetter.sln
     - name: Build
       run: dotnet build --no-restore
 
