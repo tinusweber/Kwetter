@@ -28,8 +28,8 @@ jobs:
       with:
         dotnet-version: 6.0.x
         
-    - name: Restore dependencies
-      run: dotnet restore Kwetter/Backend/Kwetter.sln
+    #- name: Restore dependencies
+     # run: dotnet restore Kwetter/Backend/Kwetter.sln
       
     - name: Build
       run: cd Backend && dotnet build --no-restore
