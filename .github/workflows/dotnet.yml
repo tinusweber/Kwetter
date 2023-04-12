@@ -11,11 +11,7 @@ on:
       - Backend/**
 jobs:
   build:
-    strategy:
-      matrix:
-        configuration: [Debug, Release]
     runs-on: windows-latest  # For a list of available runner types, refer to
-
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -29,11 +25,14 @@ jobs:
         dotnet-version: 6.0.x
         
     - name: Restore dependencies
-      run:  dotnet restore
+      run:  dotnet restore Kwetter.sln
+      working-directory: Backend
       
     - name: Build
       run: dotnet build --no-restore
+      working-directory: Backend
 
     # Execute all unit tests in the solution
     - name: Execute unit tests
-      run: cdUnitTests && dotnet test
+      run: dotnet test
+      working-directory: Backend\UnitTests
