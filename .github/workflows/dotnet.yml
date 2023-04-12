@@ -30,11 +30,12 @@ jobs:
         
     - name: Restore dependencies
       run: cd Backend && dotnet restore Kwetter.sln
+      
     - name: Build
       run: dotnet build --no-restore
 
     # Execute all unit tests in the solution
     - name: Execute unit tests
       run: |
-        cd UnitTests
+        cd Backend\UnitTests
         dotnet test
