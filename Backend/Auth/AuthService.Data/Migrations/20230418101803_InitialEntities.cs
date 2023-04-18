@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace AuthService.Data.Migrations
 {
-    public partial class initial : Migration
+    public partial class InitialEntities : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

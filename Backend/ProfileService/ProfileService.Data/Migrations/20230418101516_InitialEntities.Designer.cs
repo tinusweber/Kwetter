@@ -13,14 +13,14 @@ using ProfileService.Data.Context;
 namespace ProfileService.Data.Migrations
 {
     [DbContext(typeof(ProfileContext))]
-    [Migration("20220331170723_first")]
-    partial class first
+    [Migration("20230418101516_InitialEntities")]
+    partial class InitialEntities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.3")
+                .HasAnnotation("ProductVersion", "6.0.15")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);

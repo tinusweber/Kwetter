@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProfileService.Data.Migrations
 {
-    public partial class first : Migration
+    public partial class InitialEntities : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

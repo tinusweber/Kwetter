@@ -13,14 +13,14 @@ using TweetService.Data.Context;
 namespace TweetService.Data.Migrations
 {
     [DbContext(typeof(TweetContext))]
-    [Migration("20220331170247_first")]
-    partial class first
+    [Migration("20230418101909_InitialEntities")]
+    partial class InitialEntities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.3")
+                .HasAnnotation("ProductVersion", "6.0.15")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -32,6 +32,10 @@ namespace TweetService.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<string>("Body")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ImageBase64")
                         .IsRequired()
                         .HasColumnType("text");
 

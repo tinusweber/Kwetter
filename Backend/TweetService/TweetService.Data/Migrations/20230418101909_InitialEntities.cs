@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TweetService.Data.Migrations
 {
-    public partial class first : Migration
+    public partial class InitialEntities : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,7 +17,8 @@ namespace TweetService.Data.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     TweeterId = table.Column<string>(type: "text", nullable: false),
                     Body = table.Column<string>(type: "text", nullable: false),
-                    TweetedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    TweetedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ImageBase64 = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
