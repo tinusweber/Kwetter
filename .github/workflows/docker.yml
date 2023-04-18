@@ -16,7 +16,7 @@ jobs:
       run: |
         cd Backend
         docker build . --file ./TweetService/TweetService.Api/Dockerfile --tag ghcr.io/martijnweber/kwetter/tweetservice:latest
-        echo $CR_PAT | docker login ghcr.io -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{secrets.DOCKERHUB_TOKEN}}
+        echo $CR_PAT | docker login ghcr.io -u ${{secrets.DOCKERHUB_USERNAME}} -p ${{secrets.DOCKERHUB_PASSWORD}}
         cd TweetService/TweetService.Api
         docker push ghcr.io/martijnweber/kwetter/tweetservice:latest
   build_ProfileService:
@@ -27,7 +27,7 @@ jobs:
       run: |
         cd Backend
         docker build . --file ./ProfileService/ProfileService.Api/Dockerfile --tag ghcr.io/martijnweber/kwetter/profileservice:latest
-        echo $CR_PAT | docker login ghcr.io -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{secrets.DOCKERHUB_TOKEN}}
+        echo $CR_PAT | docker login ghcr.io -u ${{ github.actor }} -p ${{secrets.GITHUB_TOKEN}}
         cd ProfileService
         docker push ghcr.io/martijnweber/kwetter/profileservice:latest
   build_AuthService:
@@ -38,7 +38,7 @@ jobs:
       run: |
         cd Backend
         docker build . --file ./Auth/AuthService.Api/Dockerfile --tag ghcr.io/martijnweber/kwetter/authservice:latest
-        echo $CR_PAT | docker login ghcr.io -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{secrets.DOCKERHUB_TOKEN}}
+        echo $CR_PAT | docker login ghcr.io -u ${{ github.actor }} -p ${{secrets.GITHUB_TOKEN}}
         docker push ghcr.io/martijnweber/kwetter/authservice:latest
   build_PostScanner:
     runs-on: ubuntu-latest
@@ -48,7 +48,7 @@ jobs:
       run: |
         cd Backend
         docker build . --file ./PostScanner/PostScanner/Dockerfile --tag ghcr.io/martijnweber/kwetter/postscanner:latest
-        echo $CR_PAT | docker login ghcr.io -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{secrets.DOCKERHUB_TOKEN}}
+        echo $CR_PAT | docker login ghcr.io -u ${{ github.actor }} -p ${{secrets.GITHUB_TOKEN}}
         docker push ghcr.io/martijnweber/kwetter/postscanner:latest
   build_Gateway:
     runs-on: ubuntu-latest
@@ -58,7 +58,7 @@ jobs:
       run: |
         cd Backend
         docker build . --file ./Gateway/Dockerfile --tag ghcr.io/martijnweber/kwetter/gateway:latest
-        echo $CR_PAT | docker login ghcr.io -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{secrets.DOCKERHUB_TOKEN}}
+        echo $CR_PAT | docker login ghcr.io -u ${{ github.actor }} -p ${{secrets.GITHUB_TOKEN}}
         docker push ghcr.io/martijnweber/kwetter/gateway:latest
   build_ReportService:
     runs-on: ubuntu-latest
@@ -68,7 +68,7 @@ jobs:
       run: |
         cd Backend
         docker build . --file ./ReportService/ReportService.Api/Dockerfile --tag ghcr.io/martijnweber/kwetter/reportservice:latest
-        echo $CR_PAT | docker login ghcr.io -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{secrets.DOCKERHUB_TOKEN}}
+        echo $CR_PAT | docker login ghcr.io -u ${{ github.actor }} -p ${{secrets.GITHUB_TOKEN}}
         docker push ghcr.io/martijnweber/kwetter/reportservice:latest
   build_CommentService:
     runs-on: ubuntu-latest
@@ -78,5 +78,5 @@ jobs:
       run: |
         cd Backend
         docker build . --file ./CommentService/CommentService.Api/Dockerfile --tag ghcr.io/martijnweber/kwetter/commentservice:latest
-        echo $CR_PAT | docker login ghcr.io -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{secrets.DOCKERHUB_TOKEN}}
+        echo $CR_PAT | docker login ghcr.io -u ${{ github.actor }} -p ${{secrets.GITHUB_TOKEN}}
         docker push ghcr.io/martijnweber/kwetter/commentservice:latest
