@@ -15,7 +15,7 @@ jobs:
     - name: Build the Docker image
       run: |
         cd Backend
-        docker build . --file ./TweetService.Dockerfile --tag ghcr.io/martijnweber/kwetter/tweetservice:latest
+        docker build . --file ./TweetService/TweetService.Api/Dockerfile --tag ghcr.io/martijnweber/kwetter/tweetservice:latest
         echo $CR_PAT | docker login ghcr.io -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{secrets.DOCKERHUB_TOKEN}}
         cd TweetService/TweetService.Api
         docker push ghcr.io/martijnweber/kwetter/tweetservice:latest
@@ -26,7 +26,7 @@ jobs:
     - name: Build the Docker image
       run: |
         cd Backend
-        docker build . --file ./ProfileService.Dockerfile --tag ghcr.io/martijnweber/kwetter/profileservice:latest
+        docker build . --file ./ProfileService/ProfileService.Api/Dockerfile --tag ghcr.io/martijnweber/kwetter/profileservice:latest
         echo $CR_PAT | docker login ghcr.io -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{secrets.DOCKERHUB_TOKEN}}
         cd ProfileService
         docker push ghcr.io/martijnweber/kwetter/profileservice:latest
@@ -37,7 +37,7 @@ jobs:
     - name: Build the Docker image
       run: |
         cd Backend
-        docker build . --file ./AuthService.Dockerfile --tag ghcr.io/martijnweber/kwetter/authservice:latest
+        docker build . --file ./Auth/AuthService.Api/Dockerfile --tag ghcr.io/martijnweber/kwetter/authservice:latest
         echo $CR_PAT | docker login ghcr.io -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{secrets.DOCKERHUB_TOKEN}}
         docker push ghcr.io/martijnweber/kwetter/authservice:latest
   build_PostScanner:
@@ -47,7 +47,7 @@ jobs:
     - name: Build the Docker image
       run: |
         cd Backend
-        docker build . --file ./PostScanner.Dockerfile --tag ghcr.io/martijnweber/kwetter/postscanner:latest
+        docker build . --file ./PostScanner/PostScanner/Dockerfile --tag ghcr.io/martijnweber/kwetter/postscanner:latest
         echo $CR_PAT | docker login ghcr.io -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{secrets.DOCKERHUB_TOKEN}}
         docker push ghcr.io/martijnweber/kwetter/postscanner:latest
   build_Gateway:
@@ -57,7 +57,7 @@ jobs:
     - name: Build the Docker image
       run: |
         cd Backend
-        docker build . --file ./Gateway.Dockerfile --tag ghcr.io/martijnweber/kwetter/gateway:latest
+        docker build . --file ./Gateway/Dockerfile --tag ghcr.io/martijnweber/kwetter/gateway:latest
         echo $CR_PAT | docker login ghcr.io -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{secrets.DOCKERHUB_TOKEN}}
         docker push ghcr.io/martijnweber/kwetter/gateway:latest
   build_ReportService:
@@ -67,7 +67,7 @@ jobs:
     - name: Build the Docker image
       run: |
         cd Backend
-        docker build . --file ./ReportService.Dockerfile --tag ghcr.io/martijnweber/kwetter/reportservice:latest
+        docker build . --file ./ReportService/ReportService.Api/Dockerfile --tag ghcr.io/martijnweber/kwetter/reportservice:latest
         echo $CR_PAT | docker login ghcr.io -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{secrets.DOCKERHUB_TOKEN}}
         docker push ghcr.io/martijnweber/kwetter/reportservice:latest
   build_CommentService:
@@ -77,6 +77,6 @@ jobs:
     - name: Build the Docker image
       run: |
         cd Backend
-        docker build . --file ./CommentService.Dockerfile --tag ghcr.io/martijnweber/kwetter/commentservice:latest
+        docker build . --file ./CommentService/CommentService.Api/Dockerfile --tag ghcr.io/martijnweber/kwetter/commentservice:latest
         echo $CR_PAT | docker login ghcr.io -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{secrets.DOCKERHUB_TOKEN}}
         docker push ghcr.io/martijnweber/kwetter/commentservice:latest
