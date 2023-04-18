@@ -15,10 +15,10 @@ jobs:
     - name: Build the Docker image
       run: |
         cd Backend
-        docker build . --file ./TweetService/TweetService.Api/Dockerfile --tag ghcr.io/martijnweber/kwetter/tweetservice:latest
-        echo $CR_PAT | docker login ghcr.io -u ${{secrets.DOCKERHUB_USERNAME}} -p ${{secrets.DOCKERHUB_PASSWORD}}
+        docker build . --file ./TweetService/TweetService.Api/Dockerfile --tag ghcr.io/tinusweber/Kwetter/tweetservice:latest
+        echo $CR_PAT | docker login ghcr.io -u ${{ github.actor }} -p ${{secrets.GITHUB_TOKEN}}
         cd TweetService/TweetService.Api
-        docker push ghcr.io/martijnweber/kwetter/tweetservice:latest
+        docker push ghcr.io/tinusweber/Kwetter/tweetservice:latest
   build_ProfileService:
     runs-on: ubuntu-latest
     steps:
@@ -26,10 +26,10 @@ jobs:
     - name: Build the Docker image
       run: |
         cd Backend
-        docker build . --file ./ProfileService/ProfileService.Api/Dockerfile --tag ghcr.io/martijnweber/kwetter/profileservice:latest
-        echo $CR_PAT | docker login ghcr.io -u ${{secrets.DOCKERHUB_USERNAME}} -p ${{secrets.DOCKERHUB_PASSWORD}}
+        docker build . --file ./ProfileService/ProfileService.Api/Dockerfile --tag ghcr.io/tinusweber/Kwetter/profileservice:latest
+        echo $CR_PAT | docker login ghcr.io -u ${{ github.actor }} -p ${{secrets.GITHUB_TOKEN}}
         cd ProfileService
-        docker push ghcr.io/martijnweber/kwetter/profileservice:latest
+        docker push ghcr.io/tinusweber/Kwetter/profileservice:latest
   build_AuthService:
     runs-on: ubuntu-latest
     steps:
@@ -37,9 +37,9 @@ jobs:
     - name: Build the Docker image
       run: |
         cd Backend
-        docker build . --file ./Auth/AuthService.Api/Dockerfile --tag ghcr.io/martijnweber/kwetter/authservice:latest
+        docker build . --file ./Auth/AuthService.Api/Dockerfile --tag ghcr.io/tinusweber/Kwetter/authservice:latest
         echo $CR_PAT | docker login ghcr.io -u ${{ github.actor }} -p ${{secrets.GITHUB_TOKEN}}
-        docker push ghcr.io/martijnweber/kwetter/authservice:latest
+        docker push ghcr.io/tinusweber/Kwetter/authservice:latest
   build_PostScanner:
     runs-on: ubuntu-latest
     steps:
@@ -47,9 +47,9 @@ jobs:
     - name: Build the Docker image
       run: |
         cd Backend
-        docker build . --file ./PostScanner/PostScanner/Dockerfile --tag ghcr.io/martijnweber/kwetter/postscanner:latest
+        docker build . --file ./PostScanner/PostScanner/Dockerfile --tag ghcr.io/tinusweber/Kwetter/postscanner:latest
         echo $CR_PAT | docker login ghcr.io -u ${{ github.actor }} -p ${{secrets.GITHUB_TOKEN}}
-        docker push ghcr.io/martijnweber/kwetter/postscanner:latest
+        docker push ghcr.io/tinusweber/Kwetter/postscanner:latest
   build_Gateway:
     runs-on: ubuntu-latest
     steps:
@@ -57,9 +57,9 @@ jobs:
     - name: Build the Docker image
       run: |
         cd Backend
-        docker build . --file ./Gateway/Dockerfile --tag ghcr.io/martijnweber/kwetter/gateway:latest
+        docker build . --file ./Gateway/Dockerfile --tag ghcr.io/tinusweber/Kwetter/gateway:latest
         echo $CR_PAT | docker login ghcr.io -u ${{ github.actor }} -p ${{secrets.GITHUB_TOKEN}}
-        docker push ghcr.io/martijnweber/kwetter/gateway:latest
+        docker push ghcr.io/tinusweber/Kwetter/gateway:latest
   build_ReportService:
     runs-on: ubuntu-latest
     steps:
@@ -67,9 +67,9 @@ jobs:
     - name: Build the Docker image
       run: |
         cd Backend
-        docker build . --file ./ReportService/ReportService.Api/Dockerfile --tag ghcr.io/martijnweber/kwetter/reportservice:latest
+        docker build . --file ./ReportService/ReportService.Api/Dockerfile --tag ghcr.io/tinusweber/Kwetter/reportservice:latest
         echo $CR_PAT | docker login ghcr.io -u ${{ github.actor }} -p ${{secrets.GITHUB_TOKEN}}
-        docker push ghcr.io/martijnweber/kwetter/reportservice:latest
+        docker push ghcr.io/tinusweber/Kwetter/reportservice:latest
   build_CommentService:
     runs-on: ubuntu-latest
     steps:
@@ -77,6 +77,6 @@ jobs:
     - name: Build the Docker image
       run: |
         cd Backend
-        docker build . --file ./CommentService/CommentService.Api/Dockerfile --tag ghcr.io/martijnweber/kwetter/commentservice:latest
+        docker build . --file ./CommentService/CommentService.Api/Dockerfile --tag ghcr.io/tinusweber/Kwetter/commentservice:latest
         echo $CR_PAT | docker login ghcr.io -u ${{ github.actor }} -p ${{secrets.GITHUB_TOKEN}}
-        docker push ghcr.io/martijnweber/kwetter/commentservice:latest
+        docker push ghcr.io/tinusweber/Kwetter/commentservice:latest
