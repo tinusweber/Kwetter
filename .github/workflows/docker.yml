@@ -27,7 +27,7 @@ jobs:
       run: |
         cd Backend
         docker build . --file ./ProfileService/ProfileService.Api/Dockerfile --tag ghcr.io/martijnweber/kwetter/profileservice:latest
-        echo $CR_PAT | docker login ghcr.io -u ${{ github.actor }} -p ${{secrets.GITHUB_TOKEN}}
+        echo $CR_PAT | docker login ghcr.io -u ${{secrets.DOCKERHUB_USERNAME}} -p ${{secrets.DOCKERHUB_PASSWORD}}
         cd ProfileService
         docker push ghcr.io/martijnweber/kwetter/profileservice:latest
   build_AuthService:
