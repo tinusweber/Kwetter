@@ -1,0 +1,82 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - Backend/**
+
+jobs:
+
+  build_TweetService:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: |
+        cd Backend
+        docker build . --file ./TweetService/TweetService.Api/Dockerfile --tag username/tweetservice:latest
+        echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+        cd TweetService/TweetService.Api
+        docker push martijnweber/kwetter/tweetservice:latest
+  build_ProfileService:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: |
+        cd Backend
+        docker build . --file ./ProfileService/ProfileService.Api/Dockerfile --tag username/profileservice:latest
+        echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+        cd ProfileService
+        docker push martijnweber/kwetter/profileservice:latest
+  build_AuthService:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: |
+        cd Backend
+        docker build . --file ./Auth/AuthService.Api/Dockerfile --tag username/authservice:latest
+        echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+        docker push martijnweber/kwetter/authservice:latest
+  build_PostScanner:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: |
+        cd Backend
+        docker build . --file ./PostScanner/PostScanner/Dockerfile --tag username/postscanner:latest
+        echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+        docker push martijnweber/kwetter/postscanner:latest
+  build_Gateway:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: |
+        cd Backend
+        docker build . --file ./Gateway/Dockerfile --tag username/gateway:latest
+        echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+        docker push martijnweber/kwetter/gateway:latest
+  build_ReportService:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: |
+        cd Backend
+        docker build . --file ./ReportService/ReportService.Api/Dockerfile --tag username/reportservice:latest
+        echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+        docker push martijnweber/kwetter/reportservice:latest
+  build_CommentService:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: |
+        cd Backend
+        docker build . --file ./CommentService/CommentService.Api/Dockerfile --tag username/commentservice:latest
+        echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+        docker push martijnweber/kwetter/commentservice:latest
