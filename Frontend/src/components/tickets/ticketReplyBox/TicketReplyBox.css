@@ -1,0 +1,26 @@
+.cardItems{
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+.replyBox{
+    border-top: 5px solid gray;
+    padding: 30px;
+    position: fixed;
+    text-align: center;
+    display: flex;
+    bottom: 0;
+    width: 100%;
+    justify-content: center;
+}
+.sendButton{
+    height: 35px !important;
+    margin-left: 15px !important;
+}
+
+.textInput{
+    height: 35px !important;
+    width: 60vw;
+}

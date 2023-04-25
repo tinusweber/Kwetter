@@ -1,0 +1,10 @@
+
+.root{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+}
+.results{
+ margin-top: -100px;
+}

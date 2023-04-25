@@ -1,0 +1,17 @@
+.cardItems{
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    
+}
+
+.sendButton{
+    height: 35px !important;
+    margin-left: 15px !important;
+}
+
+.textInput{
+    height: 35px !important;
+}

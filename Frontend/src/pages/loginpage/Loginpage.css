@@ -1,0 +1,4 @@
+.base{
+        filter: blur(4) !important; 
+        display: none !important;
+}

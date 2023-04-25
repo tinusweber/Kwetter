@@ -1,0 +1,13 @@
+#editDetailsForm{
+    padding: 25px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    max-width: 250px;
+    background-color: cornflowerblue;
+    align-items: center;
+}
+
+.DetailsFormItem{
+    margin-bottom: 10px;
+}

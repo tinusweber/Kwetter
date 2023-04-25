@@ -1,0 +1,34 @@
+div .content{
+  background-color: gray;
+  padding-top: 50px;
+
+} 
+.toolbaritems {
+  display: flex;
+  width: 100%;
+  align-items: center;  
+  justify-content: space-evenly;
+}
+.searchbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed red;
+}
+.profile {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border: 1px dashed red;
+}
+
+.logoContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px dashed red;
+}
+.logo {
+  max-height: 64px;
+  max-width: 64px;
+}

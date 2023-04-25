@@ -1,0 +1,11 @@
+#formContainer{
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#profilePicture{
+    width: 256px;
+    height: 256px;
+    border-radius: 100%;
+}

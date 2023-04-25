@@ -1,0 +1,8 @@
+
+.item {
+    float: left;
+    margin: 10px;
+}
+.divider {
+    border-width: 10px !important;
+}

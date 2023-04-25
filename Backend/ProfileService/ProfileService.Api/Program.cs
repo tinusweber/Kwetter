@@ -61,14 +61,18 @@ var app = builder.Build();
 app.UseCors("CorsPolicy");
 
 
-// Configure the HTTP request pipeline. 
+// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseHttpsRedirection();
 // global error handler
 app.UseMiddleware<ExceptionHandelingMiddleware>();
+app.UseAuthorization();
+
 app.MapControllers();
 
 using (var Scope = app.Services.CreateScope())
