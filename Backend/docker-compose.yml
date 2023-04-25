@@ -88,7 +88,7 @@ services:
     environment:
       - ASPNETCORE_URLS=http://+:4005
       - RabbitMQConnectionString=amqp://username:password@rabbitmq:5672
-      - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5432;Database=kwetter.ProfileService;User Id=postgres;Password=postgres;
+      - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5430;Database=kwetter.ProfileService;User Id=postgres;Password=postgres;
   profile_db:
     hostname: profile_db
     image: postgres:14.7-alpine
@@ -99,9 +99,9 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=kwetter.ProfileService
     ports:
-      - "5432:5432"
+      - "5430:5432"
     expose:
-      - "5432"
+      - "5430:5432"
     volumes: 
       - profile_db:/var/lib/postgresql/data
   # GATEWAY
@@ -139,7 +139,7 @@ services:
     ports:
       - "5435:5432"
     expose:
-      - "5435"
+      - "5435:5432"
     volumes: 
       - comment_db:/var/lib/postgresql/data
   # report SERVICE
@@ -168,7 +168,7 @@ services:
     ports:
       - "5436:5432"
     expose:
-      - "5436"
+      - "5436:5432"
     volumes: 
       - report_db:/var/lib/postgresql/data
   # POST SCANNER
