@@ -29,7 +29,7 @@ spec:
               value: PostScanner_default_credentials.json
             - name: RabbitMQConnectionString
               value: amqp://username:password@rabbitmq:5672
-          image: docker.io/joepvand/backend_postscanner
+          image: docker.io/martijnweber/postscanner
           name: postscanner
           resources: {}
       hostname: postscanner

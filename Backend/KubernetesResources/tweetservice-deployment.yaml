@@ -31,7 +31,7 @@ spec:
               value: Server=tweet-db;Port=5434;Database=kwetter.TweetService;User Id=postgres;Password=postgres;
             - name: RabbitMQConnectionString
               value: amqp://username:password@rabbitmq:5672
-          image: docker.io/joepvand/backend_tweetservice:latest
+          image: docker.io/martijnweber/tweetservice:latest
           name: tweetservice
           ports:
             - containerPort: 4003

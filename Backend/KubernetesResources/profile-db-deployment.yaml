@@ -32,7 +32,7 @@ spec:
               value: postgres
             - name: POSTGRES_USER
               value: postgres
-          image: postgres:14.1-alpine
+          image: postgres:14.7-alpine
           name: profile-db
           ports:
             - containerPort: 5432

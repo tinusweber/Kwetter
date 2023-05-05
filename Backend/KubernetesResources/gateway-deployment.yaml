@@ -29,7 +29,7 @@ spec:
               value: http://+:4000
             - name: AuthServer
               value: http://authservice:4002
-          image: docker.io/joepvand/backend_gateway
+          image: docker.io/martijnweber/gateway
           name: gateway
           ports:
             - containerPort: 4000

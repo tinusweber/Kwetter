@@ -29,7 +29,7 @@ spec:
               value: Server=auth-db;Port=5433;Database=kwetter.AuthService;User Id=postgres;Password=postgres;
             - name: RabbitMQConnectionString
               value: amqp://username:password@rabbitmq:5672
-          image: docker.io/joepvand/backend_authservice
+          image: docker.io/martijnweber/authservice
           name: authservice
           ports:
             - containerPort: 4002

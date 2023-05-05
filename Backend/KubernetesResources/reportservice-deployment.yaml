@@ -31,7 +31,7 @@ spec:
               value: Server=report-db;Port=5436;Database=kwetter.ReportService;User Id=postgres;Password=postgres;
             - name: RabbitMQConnectionString
               value: amqp://username:password@rabbitmq:5672
-          image: docker.io/joepvand/backend_reportservice
+          image: docker.io/martijnweber/reportservice
           name: reportservice
           ports:
             - containerPort: 4007
