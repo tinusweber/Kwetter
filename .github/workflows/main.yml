@@ -1,0 +1,111 @@
+name: Docker Image CI / azurecr
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - Backend/**
+
+jobs:
+
+  build_TweetService:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      env:
+        DOCKER_USERNAME: ${{ secrets.AZURECR_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.AZURECR_PASSWORD }}
+        DOCKER_REGISTRY: kwetterkubernetes.azurecr.io
+      run: |
+        cd Backend
+        docker build . --file ./TweetService/TweetService.Api/Dockerfile --tag kwetterkubernetes.azurecr.io/tweetservice:latest
+        echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin $DOCKER_REGISTRY
+        cd TweetService/TweetService.Api
+        docker push kwetterkubernetes.azurecr.io/tweetservice:latest
+  build_ProfileService:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      env:
+        DOCKER_USERNAME: ${{ secrets.AZURECR_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.AZURECR_PASSWORD }}
+        DOCKER_REGISTRY: kwetterkubernetes.azurecr.io
+      run: |
+        cd Backend
+        docker build . --file ./ProfileService/ProfileService.Api/Dockerfile --tag kwetterkubernetes.azurecr.io/profileservice:latest
+        echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin $DOCKER_REGISTRY
+        cd ProfileService
+        docker push kwetterkubernetes.azurecr.io/profileservice:latest
+  build_AuthService:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      env:
+        DOCKER_USERNAME: ${{ secrets.AZURECR_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.AZURECR_PASSWORD }}
+        DOCKER_REGISTRY: kwetterkubernetes.azurecr.io
+      run: |
+        cd Backend
+        docker build . --file ./Auth/AuthService.Api/Dockerfile --tag kwetterkubernetes.azurecr.io/authservice:latest
+        echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin $DOCKER_REGISTRY
+        docker push kwetterkubernetes.azurecr.io/authservice:latest
+  build_PostScanner:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      env:
+        DOCKER_USERNAME: ${{ secrets.AZURECR_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.AZURECR_PASSWORD }}
+        DOCKER_REGISTRY: kwetterkubernetes.azurecr.io
+      run: |
+        cd Backend
+        docker build . --file ./PostScanner/PostScanner/Dockerfile --tag kwetterkubernetes.azurecr.io/postscanner:latest
+        echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin $DOCKER_REGISTRY
+        docker push kwetterkubernetes.azurecr.io/postscanner:latest
+  build_Gateway:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      env:
+        DOCKER_USERNAME: ${{ secrets.AZURECR_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.AZURECR_PASSWORD }}
+        DOCKER_REGISTRY: kwetterkubernetes.azurecr.io
+      run: |
+        cd Backend
+        docker build . --file ./Gateway/Dockerfile --tag kwetterkubernetes.azurecr.io/gateway:latest
+        echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin $DOCKER_REGISTRY
+        docker push kwetterkubernetes.azurecr.io/gateway:latest
+  build_ReportService:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      env:
+        DOCKER_USERNAME: ${{ secrets.AZURECR_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.AZURECR_PASSWORD }}
+        DOCKER_REGISTRY: kwetterkubernetes.azurecr.io
+      run: |
+        cd Backend
+        docker build . --file ./ReportService/ReportService/Dockerfile --tag kwetterkubernetes.azurecr.io/reportservice:latest
+        echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin $DOCKER_REGISTRY
+        docker push kwetterkubernetes.azurecr.io/reportservice:latest
+  build_CommentService:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      env:
+        DOCKER_USERNAME: ${{ secrets.AZURECR_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.AZURECR_PASSWORD }}
+        DOCKER_REGISTRY: kwetterkubernetes.azurecr.io
+      run: |
+        cd Backend
+        docker build . --file ./CommentService/CommentService/Dockerfile --tag kwetterkubernetes.azurecr.io/commentservice:latest
+        echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin $DOCKER_REGISTRY
+        docker push kwetterkubernetes.azurecr.io/commentservice:latest
+      
