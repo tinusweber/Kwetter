@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose.exe convert -f ../docker-compose.yaml
+    kompose.version: 1.26.0 (40646f47)
+
+  labels:
+    io.kompose.service: commentservice
+  name: commentservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: commentservice
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose.exe convert -f ../docker-compose.yaml
+        kompose.version: 1.26.0 (40646f47)
+
+      labels:
+        io.kompose.service: commentservice
+    spec:
+      containers:
+        - env:
+            - name: ASPNETCORE_URLS
+              value: http://+:4006
+            - name: ConnectionStrings__DefaultConnection
+              value: Server=comment-db;Port=5435;Database=kwetter.CommentService;User Id=postgres;Password=postgres;
+            - name: RabbitMQConnectionString
+              value: amqp://username:password@rabbitmq:5672
+          image: kwetterkubernetes.azurecr.io/commentservice:v1
+          name: commentservice
+          ports:
+            - containerPort: 4006
+          resources: {}
+      hostname: commentservice
+      restartPolicy: Always
+status: {}

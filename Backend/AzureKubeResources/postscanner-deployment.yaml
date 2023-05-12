@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose.exe convert -f ../docker-compose.yaml
+    kompose.version: 1.26.0 (40646f47)
+
+  labels:
+    io.kompose.service: postscanner
+  name: postscanner
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: postscanner
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose.exe convert -f ../docker-compose.yaml
+        kompose.version: 1.26.0 (40646f47)
+
+      labels:
+        io.kompose.service: postscanner
+    spec:
+      containers:
+        - env:
+            - name: GOOGLE_APPLICATION_CREDENTIALS
+              value: PostScanner_default_credentials.json
+            - name: RabbitMQConnectionString
+              value: amqp://username:password@rabbitmq:5672
+          image: kwetterkubernetes.azurecr.io/postscanner:v1
+          name: postscanner
+          resources: {}
+      hostname: postscanner
+      restartPolicy: Always
+status: {}

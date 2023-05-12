@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose.exe convert -f ../docker-compose.yaml
+    kompose.version: 1.26.0 (40646f47)
+
+  labels:
+    io.kompose.service: reportservice
+  name: reportservice
+spec:
+  ports:
+    - name: "4007"
+      port: 4007
+      targetPort: 4007
+  selector:
+    io.kompose.service: reportservice
+status:
+  loadBalancer: {}

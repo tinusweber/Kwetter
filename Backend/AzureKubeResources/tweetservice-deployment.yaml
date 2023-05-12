@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose.exe convert -f ../docker-compose.yaml
+    kompose.version: 1.26.0 (40646f47)
+
+  labels:
+    io.kompose.service: tweetservice
+  name: tweetservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: tweetservice
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose.exe convert -f ../docker-compose.yaml
+        kompose.version: 1.26.0 (40646f47)
+
+      labels:
+        io.kompose.service: tweetservice
+    spec:
+      containers:
+        - env:
+            - name: ASPNETCORE_URLS
+              value: http://+:4003
+            - name: ConnectionStrings__DefaultConnection
+              value: Server=tweet-db;Port=5434;Database=kwetter.TweetService;User Id=postgres;Password=postgres;
+            - name: RabbitMQConnectionString
+              value: amqp://username:password@rabbitmq:5672
+          image: kwetterkubernetes.azurecr.io/tweetservice:v1
+          name: tweetservice
+          ports:
+            - containerPort: 4003
+          resources: {}
+      hostname: tweetservice
+      restartPolicy: Always
+status: {}

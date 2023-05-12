@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose.exe convert -f ../docker-compose.yaml
+    kompose.version: 1.26.0 (40646f47)
+
+  labels:
+    io.kompose.service: comment-db
+  name: comment-db
+spec:
+  ports:
+    - name: "5435"
+      port: 5435
+      targetPort: 5432
+  selector:
+    io.kompose.service: comment-db
+status:
+  loadBalancer: {}
