@@ -11,7 +11,7 @@ COPY . .
 # Build the React application
 RUN npm run build
 # Set the environment variable for the port
-ENV PORT=3000
+ENV PORT=http://host.docker.internal:4000
 # Expose the port
 EXPOSE 3000
 # Run the command to start the server
