@@ -6,9 +6,6 @@ metadata:
     io.kompose.service: rabbitmq-claim2
   name: rabbitmq-claim2
 spec:
-  securityContext:  # Move the securityContext section outside the containers section
-    runAsUser: 0
-    runAsGroup: 0
   accessModes:
     - ReadWriteOnce
   resources:
