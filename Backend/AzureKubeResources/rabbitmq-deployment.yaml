@@ -43,10 +43,9 @@ spec:
               name: rabbitmq-claim1
             - mountPath: /var/log/rabbitmq/
               name: rabbitmq-claim2
-              # Add the following securityContext section
-              securityContext:
-                runAsUser: 0
-                runAsGroup: 0
+      securityContext:  # Move the securityContext section outside the containers section
+        runAsUser: 0
+        runAsGroup: 0
       hostname: rabbitmq
       restartPolicy: Always
       volumes:
