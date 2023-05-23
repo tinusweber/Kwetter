@@ -10,8 +10,10 @@ services:
       - ./.docker/rabbitmq/data/:/var/lib/rabbitmq/mnesia
       - ./.docker/rabbitmq/logs/:/var/log/rabbitmq/
     environment:
-      - RABBITMQ_DEFAULT_USER=username
-      - RABBITMQ_DEFAULT_PASS=password
+      - RABBITMQ_DEFAULT_USER=mifszlfj
+      - RABBITMQ_DEFAULT_PASS=wQ1UqKrNr9BeWrlZwLQluDMqhFQBPOLo
+      - RABBITMQ_DEFAULT_VHOST=mifszlfj
+      - RABBITMQ_DEFAULT_PORT=5672
     ports:
       - "5672:5672"
       - "15672:15672"
@@ -29,7 +31,7 @@ services:
       - "4002:4002"
     environment:
       - ASPNETCORE_URLS=http://+:4002
-      - RabbitMQConnectionString=amqp://username:password@rabbitmq:5672
+      - RabbitMQConnectionString=amqp://mifszlfj:wQ1UqKrNr9BeWrlZwLQluDMqhFQBPOLo@goose.rmq2.cloudamqp.com/mifszlfj:5672
       - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5433;Database=kwetter.AuthService;User Id=postgres;Password=postgres;
   auth_db:
     hostname: auth_db
@@ -58,7 +60,7 @@ services:
       - "4003:4003"
     environment:
       - ASPNETCORE_URLS=http://+:4003
-      - RabbitMQConnectionString=amqp://username:password@rabbitmq:5672
+      - RabbitMQConnectionString=amqp://mifszlfj:wQ1UqKrNr9BeWrlZwLQluDMqhFQBPOLo@goose.rmq2.cloudamqp.com/mifszlfj:5672
       - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5434;Database=kwetter.TweetService;User Id=postgres;Password=postgres;
   tweet_db:
     hostname: tweet_db
@@ -87,7 +89,7 @@ services:
       - "4005:4005"
     environment:
       - ASPNETCORE_URLS=http://+:4005
-      - RabbitMQConnectionString=amqp://username:password@rabbitmq:5672
+      - RabbitMQConnectionString=amqp://mifszlfj:wQ1UqKrNr9BeWrlZwLQluDMqhFQBPOLo@goose.rmq2.cloudamqp.com/mifszlfj:5672
       - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5430;Database=kwetter.ProfileService;User Id=postgres;Password=postgres;
   profile_db:
     hostname: profile_db
@@ -125,7 +127,7 @@ services:
       - "4006:4006"
     environment:
       - ASPNETCORE_URLS=http://+:4006
-      - RabbitMQConnectionString=amqp://username:password@rabbitmq:5672
+      - RabbitMQConnectionString=amqp://mifszlfj:wQ1UqKrNr9BeWrlZwLQluDMqhFQBPOLo@goose.rmq2.cloudamqp.com/mifszlfj:5672
       - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5435;Database=kwetter.CommentService;User Id=postgres;Password=postgres;
   comment_db:
     hostname: comment_db
@@ -154,7 +156,7 @@ services:
       - "4007:4007"
     environment:
       - ASPNETCORE_URLS=http://+:4007
-      - RabbitMQConnectionString=amqp://username:password@rabbitmq:5672
+      - RabbitMQConnectionString=amqp://mifszlfj:wQ1UqKrNr9BeWrlZwLQluDMqhFQBPOLo@goose.rmq2.cloudamqp.com/mifszlfj:5672
       - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5435;Database=kwetter.ReportService;User Id=postgres;Password=postgres;
   report_db:
     hostname: report_db
@@ -179,7 +181,7 @@ services:
     build:
       dockerfile: PostScanner/PostScanner/Dockerfile
     environment:
-      - RabbitMQConnectionString=amqp://username:password@rabbitmq:5672
+      - RabbitMQConnectionString=amqp://mifszlfj:wQ1UqKrNr9BeWrlZwLQluDMqhFQBPOLo@goose.rmq2.cloudamqp.com/mifszlfj:5672
       - GOOGLE_APPLICATION_CREDENTIALS=PostScanner_default_credentials.json
   # VOLUMES
 volumes:

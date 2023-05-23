@@ -15,7 +15,7 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "RABBITMQCONNECTIONSTRING" : "amqp://username:password@localhost:5672"
+        "RABBITMQCONNECTIONSTRING": "amqp://mifszlfj:wQ1UqKrNr9BeWrlZwLQluDMqhFQBPOLo@goose.rmq2.cloudamqp.com/mifszlfj:5672"
       },
       "applicationUrl": "https://localhost:7247;http://localhost:5247",
       "dotnetRunMessages": true
