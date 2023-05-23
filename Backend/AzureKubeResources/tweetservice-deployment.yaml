@@ -30,7 +30,7 @@ spec:
             - name: ConnectionStrings__DefaultConnection
               value: Server=tweet-db;Port=5434;Database=kwetter.TweetService;User Id=postgres;Password=postgres;
             - name: RabbitMQConnectionString
-              value: amqp://username:password@rabbitmq:5672
+              value: amqp://mifszlfj:wQ1UqKrNr9BeWrlZwLQluDMqhFQBPOLo@goose.rmq2.cloudamqp.com/mifszlfj:5672
           image: kwetterkubernetes.azurecr.io/tweetservice:v1
           name: tweetservice
           ports:
