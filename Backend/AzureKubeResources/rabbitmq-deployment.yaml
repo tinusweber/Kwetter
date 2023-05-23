@@ -30,9 +30,9 @@ spec:
       containers:
         - env:
             - name: RABBITMQ_DEFAULT_PASS
-              value: password
+              value: wQ1UqKrNr9BeWrlZwLQluDMqhFQBPOLo
             - name: RABBITMQ_DEFAULT_USER
-              value: username
+              value: mifszlfj
           image: rabbitmq:3-management-alpine
           name: rabbitmq
           ports:
