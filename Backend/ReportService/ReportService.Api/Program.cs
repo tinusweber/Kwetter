@@ -2,10 +2,12 @@ using Helpers;
 using MassTransit;
 using MassTransit.Configuration;
 using MessagingModels;
-using Microsoft.EntityFrameworkCore;
 using ReportService.Application;
 using ReportService.Data;
 using ReportService.Data.Context;
+using MongoDB.Driver;
+using System.Xml.Serialization;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,11 +27,24 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IReportRepository, ReportRepository>();
 builder.Services.AddTransient<ReportApp>();
-builder.Services.AddDbContext<ReportContext>(options =>
+
+builder.Services.AddSingleton<IMongoClient>(serviceProvider =>
 {
     var connString = builder.Configuration.GetConnectionString("DefaultConnection");
-    options.UseNpgsql(connString);
+    return new MongoClient(connString);
 });
+
+builder.Services.AddScoped<ReportContext>(serviceProvider =>
+{
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+    var databaseName = "report_mongodb"; // Replace with your desired database name
+
+    var mongoClient = serviceProvider.GetService<IMongoClient>();
+    var mongoDatabase = mongoClient.GetDatabase(databaseName);
+
+    return new ReportContext(connectionString, databaseName);
+});
+
 
 builder.Services.AddMassTransit(x =>
 {
@@ -65,9 +80,12 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-using (var Scope = app.Services.CreateScope())
+
+using (var scope = app.Services.CreateScope())
 {
-    var context = Scope.ServiceProvider.GetService<ReportContext>();
-    context?.Database.Migrate();
+    var serviceProvider = scope.ServiceProvider;
+    var initialize = serviceProvider.GetService<ReportRepository>();
+    var reportRepository = serviceProvider.GetService<IReportRepository>();
+    initialize?.Initialize(); // Add a method in ReportRepository to handle initialization if required
 }
 app.Run();

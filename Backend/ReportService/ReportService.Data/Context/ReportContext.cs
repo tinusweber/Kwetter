@@ -1,22 +1,18 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MongoDB.Driver;
 using ReportService.Data.Models;
 
 namespace ReportService.Data.Context
 {
-    public class ReportContext : DbContext
+    public class ReportContext
     {
-        public DbSet<Report> Reports { get; set; }
-        public ReportContext(DbContextOptions<ReportContext> options) : base(options)
+        private readonly IMongoDatabase _database;
+
+        public IMongoCollection<Report> Reports => _database.GetCollection<Report>("Reports");
+
+        public ReportContext(string connectionString, string databaseName)
         {
-
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Report>().Property(x => x.ReporterUserId).HasConversion(v => v.ToString(), v => Guid.Parse(v));
-            modelBuilder.Entity<Report>().Property(x => x.TweetId).HasConversion(v => v.ToString(), v => Guid.Parse(v));
-
-            base.OnModelCreating(modelBuilder);
+            var client = new MongoClient(connectionString);
+            _database = client.GetDatabase(databaseName);
         }
     }
 }

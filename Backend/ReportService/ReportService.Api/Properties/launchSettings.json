@@ -15,7 +15,7 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "RabbitMQConnectionString": "amqp://mifszlfj:wQ1UqKrNr9BeWrlZwLQluDMqhFQBPOLo@goose.rmq2.cloudamqp.com/mifszlfj:5672"
+        "RabbitMQConnectionString": "amqp://mifszlfj:wQ1UqKrNr9BeWrlZwLQluDMqhFQBPOLo@goose.rmq2.cloudamqp.com/mifszlfj"
       },
       "applicationUrl": "https://localhost:7140;http://localhost:5140",
       "dotnetRunMessages": true

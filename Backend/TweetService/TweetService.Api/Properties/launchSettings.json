@@ -12,7 +12,7 @@
       "commandName": "Project",
       "launchBrowser": false,
       "environmentVariables": {
-        "RabbitMQConnectionString": "amqp://mifszlfj:wQ1UqKrNr9BeWrlZwLQluDMqhFQBPOLo@goose.rmq2.cloudamqp.com/mifszlfj:5672",
+        "RabbitMQConnectionString": "amqp://mifszlfj:wQ1UqKrNr9BeWrlZwLQluDMqhFQBPOLo@goose.rmq2.cloudamqp.com/mifszlfj",
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "applicationUrl": "http://localhost:4001",

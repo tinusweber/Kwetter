@@ -20,14 +20,15 @@ namespace ReportService.Application
         public List<Report> GetAll()
         {
             return this._repository.GetAll()
-                .Select(x => new Report(x.Id, x.TweetId, x.ReporterUserId, x.Body, String.Empty)).ToList();
+                .Select(x => new Report(Guid.Parse(x.Id), Guid.Parse(x.TweetId), Guid.Parse(x.ReporterUserId), x.Body, String.Empty)).ToList();
+
         }
 
         public async Task<Report> GetById(Guid id)
         {
             var data = await this._repository.GetById(id);
 
-            return new Report(data.Id, data.TweetId, data.ReporterUserId, data.Body);
+            return new Report(Guid.Parse(data.Id), Guid.Parse(data.TweetId), Guid.Parse(data.ReporterUserId), data.Body);
         }
 
         public async Task DeleteById(Guid id)
