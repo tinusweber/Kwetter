@@ -30,7 +30,7 @@ spec:
             - name: ConnectionStrings__DefaultConnection
               value: mongodb://report-db:27017/kwetter.ReportService
             - name: RabbitMQConnectionString
-              value: amqp://mifszlfj:wQ1UqKrNr9BeWrlZwLQluDMqhFQBPOLo@goose.rmq2.cloudamqp.com/mifszlfj:5672
+              value: amqp://mifszlfj:wQ1UqKrNr9BeWrlZwLQluDMqhFQBPOLo@goose.rmq2.cloudamqp.com/mifszlfj
           image: kwetterkubernetes.azurecr.io/reportservice:v1
           name: reportservice
           ports:
