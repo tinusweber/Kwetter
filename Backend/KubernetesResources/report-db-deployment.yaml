@@ -25,21 +25,14 @@ spec:
     spec:
       containers:
         - env:
-            - name: POSTGRES_DB
-              value: kwetter.ReportService
-            - name: POSTGRES_PASSWORD
-              value: postgres
-            - name: POSTGRES_USER
-              value: postgres
-          image: postgres:14.7-alpine
+            - name: MONGO_INITDB_ROOT_USERNAME
+              value: root
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              value: password
+          image: mongo
           name: report-db
           ports:
-            - containerPort: 5432
-            - containerPort: 5436
-          resources: {}
-          volumeMounts:
-            - mountPath: /var/lib/postgresql/data
-              name: report-db
+            - containerPort: 27017
       hostname: report-db
       restartPolicy: Always
       volumes:

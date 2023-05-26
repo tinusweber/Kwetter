@@ -10,9 +10,9 @@ metadata:
   name: report-db
 spec:
   ports:
-    - name: "5436"
-      port: 5436
-      targetPort: 5432
+    - name: "27017"
+      port: 27017
+      targetPort: 27017
   selector:
     io.kompose.service: report-db
 status:

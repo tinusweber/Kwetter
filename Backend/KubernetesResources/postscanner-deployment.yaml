@@ -28,7 +28,7 @@ spec:
             - name: GOOGLE_APPLICATION_CREDENTIALS
               value: PostScanner_default_credentials.json
             - name: RabbitMQConnectionString
-              value: amqp://username:password@rabbitmq:5672
+              value: amqp://mifszlfj:wQ1UqKrNr9BeWrlZwLQluDMqhFQBPOLo@goose.rmq2.cloudamqp.com/mifszlfj
           image: docker.io/martijnweber/postscanner
           name: postscanner
           resources: {}

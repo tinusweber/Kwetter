@@ -30,7 +30,7 @@ spec:
             - name: ConnectionStrings__DefaultConnection
               value: Server=comment-db;Port=5435;Database=kwetter.CommentService;User Id=postgres;Password=postgres;
             - name: RabbitMQConnectionString
-              value: amqp://username:password@rabbitmq:5672
+              value: amqp://mifszlfj:wQ1UqKrNr9BeWrlZwLQluDMqhFQBPOLo@goose.rmq2.cloudamqp.com/mifszlfj
           image: docker.io/martijnweber/commentservice
           name: commentservice
           ports:
