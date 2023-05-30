@@ -4,15 +4,16 @@ metadata:
   annotations:
     kompose.cmd: kompose.exe convert -f ../docker-compose.yaml
     kompose.version: 1.26.0 (40646f47)
-
   labels:
     io.kompose.service: gateway
   name: gateway
 spec:
+  type: NodePort
   ports:
     - name: "4000"
       port: 4000
       targetPort: 4000
+      nodePort: 30000
   selector:
     io.kompose.service: gateway
 status:
