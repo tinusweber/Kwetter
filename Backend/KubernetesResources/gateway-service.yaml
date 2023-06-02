@@ -13,7 +13,7 @@ spec:
     - name: "4000"
       port: 4000
       targetPort: 4000
-      NodePort: 30000
+      nodePort: 30000
   selector:
     io.kompose.service: gateway
 status:
