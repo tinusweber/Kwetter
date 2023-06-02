@@ -28,9 +28,8 @@ services:
     build:
       dockerfile: /Auth/AuthService.Api/Dockerfile
     ports:
-      - "4002:4002"
+      - "4002:80"
     environment:
-      - ASPNETCORE_URLS=http://+:4002
       - RabbitMQConnectionString=amqp://mifszlfj:wQ1UqKrNr9BeWrlZwLQluDMqhFQBPOLo@goose.rmq2.cloudamqp.com/mifszlfj
       - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5433;Database=kwetter.AuthService;User Id=postgres;Password=postgres;
   auth_db:
@@ -57,9 +56,8 @@ services:
     build:
       dockerfile: TweetService/TweetService.Api/Dockerfile
     ports:
-      - "4003:4003"
+      - "4003:80"
     environment:
-      - ASPNETCORE_URLS=http://+:4003
       - RabbitMQConnectionString=amqp://mifszlfj:wQ1UqKrNr9BeWrlZwLQluDMqhFQBPOLo@goose.rmq2.cloudamqp.com/mifszlfj
       - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5434;Database=kwetter.TweetService;User Id=postgres;Password=postgres;
   tweet_db:
@@ -86,9 +84,8 @@ services:
     build:
       dockerfile: ProfileService/ProfileService.Api/Dockerfile
     ports:
-      - "4005:4005"
+      - "4005:80"
     environment:
-      - ASPNETCORE_URLS=http://+:4005
       - RabbitMQConnectionString=amqp://mifszlfj:wQ1UqKrNr9BeWrlZwLQluDMqhFQBPOLo@goose.rmq2.cloudamqp.com/mifszlfj
       - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5430;Database=kwetter.ProfileService;User Id=postgres;Password=postgres;
   profile_db:
@@ -111,9 +108,8 @@ services:
       build:
         dockerfile: Gateway/Dockerfile
       ports:
-        - "4000:4000"
+        - "4000:80"
       environment:
-        - ASPNETCORE_URLS=http://+:4000
         - AuthServer=http://host.docker.internal:4002
   # COMMENT SERVICE
   commentservice:
@@ -124,9 +120,8 @@ services:
     build:
       dockerfile: CommentService/CommentService.Api/Dockerfile
     ports:
-      - "4006:4006"
+      - "4006:80"
     environment:
-      - ASPNETCORE_URLS=http://+:4006
       - RabbitMQConnectionString=amqp://mifszlfj:wQ1UqKrNr9BeWrlZwLQluDMqhFQBPOLo@goose.rmq2.cloudamqp.com/mifszlfj
       - ConnectionStrings:DefaultConnection=Server=host.docker.internal;Port=5435;Database=kwetter.CommentService;User Id=postgres;Password=postgres;
   comment_db:
@@ -154,9 +149,8 @@ services:
     build:
       dockerfile: ReportService/ReportService.Api/Dockerfile
     ports:
-      - "4007:4007"
+      - "4007:80"
     environment:
-      - ASPNETCORE_URLS=http://+:4007
       - RabbitMQConnectionString=amqp://mifszlfj:wQ1UqKrNr9BeWrlZwLQluDMqhFQBPOLo@goose.rmq2.cloudamqp.com/mifszlfj
       - ConnectionStrings:DefaultConnection=mongodb://mongodb_host:27017/kwetter.ReportService
   report_db:

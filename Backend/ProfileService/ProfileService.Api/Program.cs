@@ -77,6 +77,8 @@ using (var Scope = app.Services.CreateScope())
     var context = Scope.ServiceProvider.GetService<ProfileContext>();
     context?.Database.Migrate();
 }
+
+app.MapGet("/", () => "hello");
 app.Run();
 
 
