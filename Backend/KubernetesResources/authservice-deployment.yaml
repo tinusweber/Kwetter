@@ -23,8 +23,6 @@ spec:
     spec:
       containers:
         - env:
-            - name: ASPNETCORE_URLS
-              value: http://+:4002
             - name: ConnectionStrings__DefaultConnection
               value: Server=auth-db;Port=5433;Database=kwetter.AuthService;User Id=postgres;Password=postgres;
             - name: RabbitMQConnectionString

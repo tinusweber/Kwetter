@@ -25,8 +25,6 @@ spec:
     spec:
       containers:
         - env:
-            - name: ASPNETCORE_URLS
-              value: http://+:4006
             - name: ConnectionStrings__DefaultConnection
               value: Server=comment-db;Port=5435;Database=kwetter.CommentService;User Id=postgres;Password=postgres;
             - name: RabbitMQConnectionString
