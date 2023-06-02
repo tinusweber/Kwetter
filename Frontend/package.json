@@ -16,7 +16,7 @@
     "react-alert-template-basic": "^1.0.0",
     "react-dom": "^16.13.1",
     "react-images-upload": "^1.2.8",
-    "react-router-dom": "^5.2.0",
+    "react-router-dom": "^5.3.4",
     "react-scripts": "^5.0.1",
     "react-validation": "^3.0.7"
   },
