@@ -8,10 +8,12 @@ metadata:
     io.kompose.service: gateway
   name: gateway
 spec:
+  type: NodePort
   ports:
     - name: "4000"
       port: 4000
       targetPort: 4000
+      NodePort: 30000
   selector:
     io.kompose.service: gateway
 status:
