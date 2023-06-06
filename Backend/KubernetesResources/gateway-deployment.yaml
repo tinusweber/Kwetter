@@ -4,7 +4,6 @@ metadata:
   annotations:
     kompose.cmd: kompose.exe convert -f ../docker-compose.yaml
     kompose.version: 1.26.0 (40646f47)
-
   labels:
     io.kompose.service: gateway
   name: gateway
@@ -19,14 +18,13 @@ spec:
       annotations:
         kompose.cmd: kompose.exe convert -f ../docker-compose.yaml
         kompose.version: 1.26.0 (40646f47)
-
       labels:
         io.kompose.service: gateway
     spec:
       containers:
         - env:
             - name: AuthServer
-              value: http://authservice:4002
+              value: ""
           image: docker.io/martijnweber/gateway
           name: gateway
           ports:
