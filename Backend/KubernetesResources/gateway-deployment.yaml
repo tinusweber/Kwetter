@@ -22,10 +22,7 @@ spec:
         io.kompose.service: gateway
     spec:
       containers:
-        - env:
-            - name: AuthServer
-              value: ""
-          image: docker.io/martijnweber/gateway
+        - image: docker.io/martijnweber/gateway
           name: gateway
           ports:
             - containerPort: 4000
