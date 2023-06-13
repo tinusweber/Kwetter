@@ -9,6 +9,7 @@ using MassTransit;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Serilog;
 
 namespace AuthService.Api
 {
@@ -24,13 +25,15 @@ namespace AuthService.Api
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<ICorsPolicyService>((container) =>
+            var logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(Configuration)
+                .WriteTo.Seq("http://localhost:80")
+                .Enrich.FromLogContext()
+                .CreateLogger();
+
+            services.AddLogging(loggingBuilder =>
             {
-                var logger = container.GetRequiredService<ILogger<DefaultCorsPolicyService>>();
-                return new DefaultCorsPolicyService(logger)
-                {
-                    AllowAll = true
-                };
+                loggingBuilder.AddSerilog(logger, dispose: true);
             });
 
             services.AddCors();

@@ -6,6 +6,7 @@ using TweetService.Data.Context;
 using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TweetService.Data.Consumers;
+using Serilog;
 
 namespace TweetService.Api
 {
@@ -21,6 +22,16 @@ namespace TweetService.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(Configuration)
+                .WriteTo.Seq("http://localhost:80")
+                .Enrich.FromLogContext()
+                .CreateLogger();
+
+            services.AddLogging(loggingBuilder =>
+            {
+                loggingBuilder.AddSerilog(logger, dispose: true);
+            });
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
@@ -66,7 +77,7 @@ namespace TweetService.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, TweetContext context)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, TweetContext context, ILoggerFactory loggerFactory)
         {
             app.UseCors("CorsPolicy");
             // global error handler
@@ -76,6 +87,7 @@ namespace TweetService.Api
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
 
             context.Database.Migrate();
+            loggerFactory.AddSerilog();
         }
     }
 }

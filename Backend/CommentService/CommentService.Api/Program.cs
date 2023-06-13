@@ -4,8 +4,20 @@ using CommentService.Data.Context;
 using Helpers;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
+using Serilog.Events;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Configure Serilog
+Log.Logger = new LoggerConfiguration()
+    .Enrich.FromLogContext()
+    .Enrich.WithEnvironmentUserName()
+    .WriteTo.Seq("http://localhost:80")
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+    .CreateLogger();
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog();
 
 // Add services to the container.
 builder.Services.AddCors(options =>

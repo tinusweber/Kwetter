@@ -5,8 +5,20 @@ using ProfileService.Application;
 using ProfileService.Data;
 using ProfileService.Data.Consumers;
 using ProfileService.Data.Context;
+using Serilog.Events;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Configure Serilog
+Log.Logger = new LoggerConfiguration()
+    .Enrich.FromLogContext()
+    .Enrich.WithEnvironmentUserName()
+    .WriteTo.Seq("http://localhost:80")
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+    .CreateLogger();
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog();
 
 // Add services to the container.
 builder.Services.AddCors(options =>
@@ -77,7 +89,7 @@ using (var Scope = app.Services.CreateScope())
     var context = Scope.ServiceProvider.GetService<ProfileContext>();
     context?.Database.Migrate();
 }
-
+app.UseSerilogRequestLogging(); // Enable Serilog request logging
 app.MapGet("/", () => "hello");
 app.Run();
 

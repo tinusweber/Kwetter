@@ -19,6 +19,23 @@ services:
       - "15672:15672"
     expose:
       - "5672"
+  # HELLO SERVICE
+  helloservice:
+    hostname: helloservice
+    build:
+      dockerfile: /HelloService/helloSerivce/Dockerfile
+    ports:
+      - "4009:80"
+  seq:
+    image: datalust/seq:2023.1
+    restart: unless-stopped
+    environment:
+        ACCEPT_EULA: "Y"
+    ports:
+        - "80:80/tcp"
+        - "5341:5341/tcp"
+
+
   # AUTH SERVICE
   authservice:
     hostname: authservice
