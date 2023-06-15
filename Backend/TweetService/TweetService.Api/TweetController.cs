@@ -1,6 +1,7 @@
 ﻿using Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using TweetService.Api.Models;
 using TweetService.Api.Models.Requests;
 using TweetService.Application;
@@ -11,11 +12,13 @@ namespace TweetService.Api
     [Route("[controller]")]
     public class TweetController : ControllerBase
     {
+        private readonly ILogger<TweetController> logger;
         private readonly TweetApplication tweetApp;
 
-        public TweetController(TweetApplication tweetApp)
+        public TweetController(TweetApplication tweetApp, ILogger<TweetController> logger)
         {
             this.tweetApp = tweetApp;
+            this.logger = logger;
         }
 
         [HttpGet("/Feed")]
@@ -23,6 +26,7 @@ namespace TweetService.Api
         {
             var guid = this.HttpContext.GetUserId();
             var result = this.tweetApp.GetFeedByUser(guid);
+            logger.LogInformation("Retrieved feed for user {UserId}.", guid);
             return Ok(result);
         }
 

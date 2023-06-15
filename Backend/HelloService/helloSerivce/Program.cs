@@ -2,7 +2,9 @@ using Serilog;
 using Serilog.Events;
 using Serilog.Sinks.Http.BatchFormatters;
 using Serilog.Formatting.Compact;
-using Serilog.Sinks.RabbitMQ;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,11 +15,15 @@ var logger = new LoggerConfiguration()
         queueLimitBytes: null, // Use the default queue size
         batchFormatter: new ArrayBatchFormatter(),
         textFormatter: new CompactJsonFormatter())
-
     .MinimumLevel.Override("Microsoft", LogEventLevel.Debug)
     .MinimumLevel.Override("System", LogEventLevel.Debug)
     .Enrich.FromLogContext()
     .CreateLogger();
+
+var loggerFactory = LoggerFactory.Create(builder =>
+{
+    builder.AddSerilog(logger, dispose: true);
+});
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
