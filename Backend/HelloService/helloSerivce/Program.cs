@@ -1,11 +1,21 @@
 using Serilog;
+using Serilog.Events;
+using Serilog.Sinks.Http.BatchFormatters;
+using Serilog.Formatting.Compact;
+using Serilog.Sinks.RabbitMQ;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configure Serilog
 var logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
-    .WriteTo.Seq("http://localhost:80")
+    .WriteTo.Http("http://seq:5341",
+        queueLimitBytes: null, // Use the default queue size
+        batchFormatter: new ArrayBatchFormatter(),
+        textFormatter: new CompactJsonFormatter())
+
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Debug)
+    .MinimumLevel.Override("System", LogEventLevel.Debug)
     .Enrich.FromLogContext()
     .CreateLogger();
 

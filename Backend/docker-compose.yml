@@ -26,6 +26,8 @@ services:
       dockerfile: /HelloService/helloSerivce/Dockerfile
     ports:
       - "4009:80"
+    depends_on:
+      - seq
   seq:
     image: datalust/seq:2023.1
     restart: unless-stopped
@@ -121,12 +123,14 @@ services:
     volumes: 
       - profile_db:/var/lib/postgresql/data
   ## GATEWAY
-  #gateway:
-  #    build:
-  #      dockerfile: Gateway/Dockerfile
-  #    ports:
-  #      - "4000:80"
-  #    environment:
+  gateway:
+      build:
+        dockerfile: Gateway/Dockerfile
+      ports:
+        - "4000:80"
+      depends_on:
+        - seq
+ #     environment:
   #      - AuthServer=http://host.docker.internal:4002
   # COMMENT SERVICE
   commentservice:
